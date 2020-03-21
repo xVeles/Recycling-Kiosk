@@ -84,12 +84,20 @@ namespace Recycling_Kiosk.Controller
                         {
                             while (sqliteDataReader.Read())
                             {
+                                string errorMsg = "";
                                 if (user.Username == (string)sqliteDataReader["Username"])
-                                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Username not avaliable");
+                                    errorMsg = "Username not avaliable";
                                 else if (user.Email == (string)sqliteDataReader["Email"])
-                                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Email not avaliable");
+                                    errorMsg = "Email not avaliable";
+
+                                if (errorMsg != "")
+                                {
+                                    sqliteConnection.Close();
+                                    return Request.CreateResponse(HttpStatusCode.BadRequest, errorMsg);
+                                }
                             }
                         }
+                    }
                     catch
                     {
                         return Request.CreateResponse(HttpStatusCode.BadRequest, "Internal Server Error: DB Connection fail");
@@ -97,10 +105,24 @@ namespace Recycling_Kiosk.Controller
                 }
 
 
-
                 using (SqliteCommand sqliteCommand = new SqliteCommand("INSERT INTO Users(\'Username\', \'Firstname\', \'Lastname\', \'Password\', \'Email\') VALUES (\'@user\', \'@firstname\', \'@lastname\', \'@passowrd\', \'@email\');"))
                 {
+                    user.Password = StrUtils.Hash(string.Format("{0}:{1}:{2}", user.Email, user.Password, configReader.GetString("Realm")));
                     sqliteCommand.Parameters.Add(new SqliteParameter("@user", user.Username));
+                    sqliteCommand.Parameters.Add(new SqliteParameter("@firstname", user.Firstname));
+                    sqliteCommand.Parameters.Add(new SqliteParameter("@lastname", user.Lastname));
+                    sqliteCommand.Parameters.Add(new SqliteParameter("@password", user.Password));
+                    sqliteCommand.Parameters.Add(new SqliteParameter("@email", user.Email));
+
+                    try
+                    {
+                        sqliteCommand.ExecuteNonQuery();
+                        return Request.CreateResponse(HttpStatusCode.OK, "User Registered");
+                    }
+                    catch
+                    {
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, "Internal Server Error: DB Connection fail");
+                    }
                 }
             }
         }
