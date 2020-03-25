@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
-using Recycling_Kiosk.Utils;
+﻿using Recycling_Kiosk.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +12,6 @@ namespace Recycling_Kiosk
 {
     public class WebApiApplication : HttpApplication
     {
-        private readonly string Version = "0.1.7";
-
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
