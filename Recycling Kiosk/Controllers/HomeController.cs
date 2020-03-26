@@ -3,16 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-/*
+
 namespace Recycling_Kiosk.Controllers
 {
-    public class HomeController : Controllers
+    public class HomeController : Controller
     {
-        public ActionResult Index()
+        public string Index()
         {
-            ViewBag.Title = "Home Page";
+            return "Hello";
+        }
 
-            return View();
+        public string Test()
+        {
+            return "Tset";
+        }
+
+        [HttpPost]
+        public string Extra()
+        {
+            return "extra";
         }
     }
-}*/
+}

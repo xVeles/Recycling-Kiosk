@@ -15,14 +15,8 @@ namespace Recycling_Kiosk
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
-                name: "Users",
-                url: "api/users/{id}",
-                defaults: new { Controller = "Users", id = UrlParameter.Optional }
+                url: "{controller}/{action}",
+                defaults: new { controller = "Home", action = "Index"}
             );
         }
     }

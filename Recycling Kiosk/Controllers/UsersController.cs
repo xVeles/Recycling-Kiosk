@@ -1,24 +1,19 @@
 ﻿using Recycling_Kiosk.Utils;
 using System;
-using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+using System.Web.Mvc;
+using HttpGetAttribute = System.Web.Mvc.HttpGetAttribute;
+using HttpPostAttribute = System.Web.Mvc.HttpPostAttribute;
 
-namespace Recycling_Kiosk.Controller
+namespace Recycling_Kiosk.Controllers
 {
-    public class UsersController : ApiController
+    public class UsersController : Controller
     {
         private readonly ConfigReader configReader = new ConfigReader();
-        /// <summary>
-        /// Gets login info for user
-        /// </summary>
-        /// <param name="user">User to login (Email/Username & Password req)</param>
-        /// <returns>User if successful login</returns>
+
         [HttpGet]
-        public new HttpResponseMessage User(User user)
+        public new ActionResult Login(User user)
         {
             Console.WriteLine("Recieved Details: {0} {1} {2} {3} {4} {5}", user.Username, user.Firstname, user.Lastname, user.Password, user.Email, user.Points);
             using (SQLiteConnection sqliteConnection = DBConnecter.DBConnect())
@@ -46,12 +41,18 @@ namespace Recycling_Kiosk.Controller
                                     user.Lastname = (string)sqliteDataReader["Lastname"];
                                     user.Username = (string)sqliteDataReader["Username"];
                                     sqliteDataReader.Close();
-                                    return Request.CreateResponse(HttpStatusCode.OK, user);
+
+                                    return new JsonResult
+                                    {
+                                        Data = user,
+                                        JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                                    };
                                 }
                                 else
                                 {
                                     sqliteDataReader.Close();
-                                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Username/Email or Password");
+
+                                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Invalid Username/Email or Password");
                                 }
                             }
 
@@ -61,16 +62,16 @@ namespace Recycling_Kiosk.Controller
                     catch (Exception ex)
                     {
                         sqliteConnection.Close();
-                        return Request.CreateResponse(HttpStatusCode.BadRequest, "Internal Server Error: DB Connection fail\n" + ex.ToString());
+                        return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, "Internal Server Error: DB Insert fail - " + ex.ToString());
                     }
                 }
             }
-            return Request.CreateResponse(HttpStatusCode.BadRequest, "Internal Server Error: Execution failure");
+            return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, "Internal Server Error: Execution fail");
         }
         
 
         [HttpPost]
-        public new HttpResponseMessage Register(User user)
+        public new ActionResult Register(User user)
         {
             Console.WriteLine("Recieved Details: {0} {1} {2} {3} {4} {5}", user.Username, user.Firstname, user.Lastname, user.Password, user.Email, user.Points);
             using (SQLiteConnection sqliteConnection = DBConnecter.DBConnect())
@@ -100,7 +101,7 @@ namespace Recycling_Kiosk.Controller
                                 if (errorMsg != "")
                                 {
                                     sqliteConnection.Close();
-                                    return Request.CreateResponse(HttpStatusCode.BadRequest, errorMsg);
+                                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest, errorMsg);
                                 }
                             }
                         }
@@ -126,22 +127,24 @@ namespace Recycling_Kiosk.Controller
                             sqliteInsertCommand.ExecuteNonQuery();
                             sqliteConnection.Close();
 
-                            return Request.CreateResponse(HttpStatusCode.OK, "User Registered");
+                            return new JsonResult
+                            {
+                                Data = "User registered."
+                            };
                         }
                         catch (Exception ex)
                         {
                             sqliteConnection.Close();
 
-                            return Request.CreateResponse(HttpStatusCode.BadRequest, "Internal Server Error: DB Insert fail - ", ex.ToString());
+                            return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, "Internal Server Error: DB Insert fail - " + ex.ToString());
                         }
                     }
                 }
             }
         }
         
-        [Route("api/users/update")]
         [HttpPost]
-        public new HttpResponseMessage Update(User user)
+        public new ActionResult Update(User user)
         {
             
             using (SQLiteConnection sqliteConnection = DBConnecter.DBConnect())
@@ -160,13 +163,16 @@ namespace Recycling_Kiosk.Controller
                         sqliteCommand.ExecuteNonQuery();
                         sqliteConnection.Close();
 
-                        return Request.CreateResponse(HttpStatusCode.OK, "Updated Profile");
+                        return new JsonResult
+                        {
+                            Data = "Account updated"
+                        };
                     }
                     catch (Exception ex)
                     {
                         sqliteConnection.Close();
 
-                        return Request.CreateResponse(HttpStatusCode.BadRequest, "Internal Server Error: DB Insert fail - ", ex.ToString());
+                        return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, "Internal Server Error: DB Insert fail - " + ex.ToString());
                     }
                 }
             }
