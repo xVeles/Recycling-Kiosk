@@ -60,8 +60,8 @@ Data Structure for *User* Class
 | ------ | ------ |
 | POST URL | *localhost:####/users/update* |
 | Body Content |  *User* data structure - all fields req |
-| Successful Register | *OK Status* (Code 200) with successful message |
-| Unsuccessful Register | *BadRequest* (Code 400) with error message |
+| Successful Update | *OK Status* (Code 200) with successful message |
+| Unsuccessful Update | *BadRequest* (Code 400) with error message |
 
 *Username cannot be changed*
 *If BadRequest is returned it is probably due to the new email already existing in the database*
