@@ -2,8 +2,10 @@
 
 # Recycling-Kiosk
 RDA's WebAPI for 399
-WebAPI Version: 1.1.6.7536
-Readme Version: 1.1.6.7536
+
+WebAPI Version: 1.1.8.1262
+
+Readme Version: 1.1.8.1262
 
 ### Hosting/Starting Web App
 **Windows Hosting**
@@ -32,10 +34,10 @@ Data Structure for *User* Class
 ### Login - *GET*
 | Info  | Description |
 | ------ | ------ |
-| GET URL | localhost:####/api/users/ |
+| GET URL | localhost:####/users/login |
 | Body Content | *User* data structure - *Email* & *Password* req |
 | Successful Login | *OK Status* (Code 200) with *User* class with info |
-| Unsuccessful Login | *BadRequest* (Code 400) with error message body content |
+| Unsuccessful Login | *Bad Request* (Code 400) with error message |
 
 *Returned content on successful login does not include password field as it would be the MD5Hashed version*
 *Front end Web app required to do email format verification,*
@@ -43,10 +45,10 @@ Data Structure for *User* Class
 ### Register - *POST*
 | Info  | Description |
 | ------ | ------ |
-| POST URL | *localhost:####/api/users/* |
+| POST URL | *localhost:####/users/register* |
 | Body Content |  *User* data structure - all fields req |
-| Successful Register | *OK Status* (Code 200) with successful message body content |
-| Unsuccessful Register | *BadRequest* (Code 400) with error message body content |
+| Successful Register | *OK Status* (Code 200) with successful message  |
+| Unsuccessful Register | *Bad Request* (Code 400) with error message  |
 
 *Front end Web App required to do field verification (WebAPI will do Username/Email check)*
 *BadRequest gets returned if one of the following requirements is met:*
@@ -56,10 +58,10 @@ Data Structure for *User* Class
 ### Update - *POST*
 | Info  | Description |
 | ------ | ------ |
-| POST URL | *localhost:####/api/users/update* |
+| POST URL | *localhost:####/users/update* |
 | Body Content |  *User* data structure - all fields req |
-| Successful Register | *OK Status* (Code 200) with successful message body content |
-| Unsuccessful Register | *BadRequest* (Code 400) with error message body content |
+| Successful Register | *OK Status* (Code 200) with successful message |
+| Unsuccessful Register | *BadRequest* (Code 400) with error message |
 
 *Username cannot be changed*
 *If BadRequest is returned it is probably due to the new email already existing in the database*
