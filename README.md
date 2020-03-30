@@ -41,7 +41,6 @@ Data Structure for *User* Class
 
 *Note: Points may get removed in future versions*
 
-# HTTP Requests for Users
 ### Login - *GET*
 | Info  | Description |
 | ------ | ------ |
