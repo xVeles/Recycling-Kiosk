@@ -107,3 +107,4 @@ Data Structure for *Kiosk* Class
 | Successful Fetech | *OK Status* (Code 200) with successful message body content |
 
 *Note: Body Content maybe empty if there are no Kiosks within the Distance range*
+*Body Content is returned as a list of Kiosks within the set Distance. Units is in km (Lots of decimals)*
