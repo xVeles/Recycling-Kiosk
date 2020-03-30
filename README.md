@@ -43,6 +43,7 @@ Data Structure for *User* Class
 | Donate | Bool (Stored as  Int 1 or 0) |
 
 *Note: Points may get removed in future versions*
+
 *Recycle, Upcycle and Doante are all booleans (true/false) however are transfered as 1 (true) and 0 (false) due to the db storing them in this form. It's just easier to keep them in this form that constantly convert them in the code*
 
 ### Login - *GET*
