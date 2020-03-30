@@ -36,6 +36,7 @@ Data Structure for *User* Class
 | Password | String |
 | Email | String |
 | Points | Int |
+
 *Note: Points may get removed in future versions*
 
 # HTTP Requests for Users
@@ -47,6 +48,7 @@ Data Structure for *User* Class
 | Body Content | *User* data structure - *Email* & *Password* req |
 | Successful Login | *OK Status* (Code 200) with *User* class with info |
 | Unsuccessful Login | *BadRequest* (Code 400) with error message body content |
+
 *Returned content on successful login does not include password field as it would be the MD5Hashed version*
 *Front end Web app required to do email format verification,*
 
@@ -58,6 +60,7 @@ Data Structure for *User* Class
 | Body Content |  *User* data structure - all fields req |
 | Successful Register | *OK Status* (Code 200) with successful message body content |
 | Unsuccessful Register | *BadRequest* (Code 400) with error message body content |
+
 *Front end Web App required to do field verification (WebAPI will do Username/Email check)*
 *BadRequest gets returned if one of the following requirements is met:*
 - Username already taken
@@ -71,7 +74,8 @@ Data Structure for *User* Class
 | Body Content |  *User* data structure - all fields req |
 | Successful Register | *OK Status* (Code 200) with successful message body content |
 | Unsuccessful Register | *BadRequest* (Code 400) with error message body content |
-*Username cannot be changed*
+
+*Username cannot be changed
 *If BadRequest is returned it is probably due to the new email already existing in the database
 
 ## Kiosk
@@ -100,4 +104,5 @@ Data Structure for *Kiosk* Class
 | POST URL | *localhost:####/kiosk/search* |
 | Body Content | *Kiosk* data structure - *Longitude*, *Latitude*, *Distance* req |
 | Successful Fetech | *OK Status* (Code 200) with successful message body content |
+
 *Note: Body Content maybe empty if there are no Kiosks within the Distance range*
