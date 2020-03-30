@@ -3,8 +3,6 @@ using System;
 using System.Data.SQLite;
 using System.Net;
 using System.Web.Mvc;
-using HttpGetAttribute = System.Web.Mvc.HttpGetAttribute;
-using HttpPostAttribute = System.Web.Mvc.HttpPostAttribute;
 
 namespace Recycling_Kiosk.Controllers
 {
@@ -13,7 +11,7 @@ namespace Recycling_Kiosk.Controllers
         private readonly ConfigReader configReader = new ConfigReader();
 
         [HttpGet]
-        public new ActionResult Login(User user)
+        public ActionResult Login(User user)
         {
             Console.WriteLine("Recieved Details: {0} {1} {2} {3} {4} {5}", user.Username, user.Firstname, user.Lastname, user.Password, user.Email, user.Points);
             using (SQLiteConnection sqliteConnection = DBConnecter.DBConnect())
@@ -71,7 +69,7 @@ namespace Recycling_Kiosk.Controllers
         
 
         [HttpPost]
-        public new ActionResult Register(User user)
+        public ActionResult Register(User user)
         {
             Console.WriteLine("Recieved Details: {0} {1} {2} {3} {4} {5}", user.Username, user.Firstname, user.Lastname, user.Password, user.Email, user.Points);
             using (SQLiteConnection sqliteConnection = DBConnecter.DBConnect())
@@ -144,7 +142,7 @@ namespace Recycling_Kiosk.Controllers
         }
         
         [HttpPost]
-        public new ActionResult Update(User user)
+        public ActionResult Update(User user)
         {
             
             using (SQLiteConnection sqliteConnection = DBConnecter.DBConnect())
