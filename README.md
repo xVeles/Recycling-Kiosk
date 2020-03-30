@@ -8,12 +8,12 @@ Readme Version: 1.2.1.0253
 ## Table of Contents
 - [Hosting](#Hosting-&-Starting-Web-App)
 - [Users](#Users)
-    - [Users - Login](#Login)
-    - [Users - Register](#Register)
-    - [Users - Update](#Update)
+    - [Users - Login](#Login---GET)
+    - [Users - Register](#Register---POST)
+    - [Users - Update](#Update---POST)
 - [Kiosks](#Kiosk)
-    - [Kiosks - Kiosks](#Kiosks)
-    - [Kiosks - Search](#Search)
+    - [Kiosks - Kiosks](#Kiosks---GET)
+    - [Kiosks - Search](#Search---GET)
 
 
 ### Hosting & Starting Web App
@@ -95,7 +95,7 @@ Data Structure for *Kiosk* Class
 
 ### Search - GET
 | Info  | Description |
-| ------ | ------ |
+| ------ | ------------ |
 | Usage | Searches for kiosks within the *Distance* from provided location |
 | POST URL | *localhost:####/kiosk/search* |
 | Body Content | *Kiosk* data structure - *Longitude*, *Latitude*, *Distance* req |
