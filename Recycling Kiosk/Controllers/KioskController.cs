@@ -1,4 +1,5 @@
-﻿using Recycling_Kiosk.Utils;
+﻿using Recycling_Kiosk.Objects;
+using Recycling_Kiosk.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -33,7 +34,8 @@ namespace Recycling_Kiosk.Controllers
                                     Name = (string)sqliteDataReader["Name"],
                                     Longitude = (double)sqliteDataReader["Longitude"],
                                     Latitude = (double)sqliteDataReader["Latitude"],
-                                    Address = (string)sqliteDataReader["Address"]
+                                    Address = (string)sqliteDataReader["Address"],
+                                    KioskType = (string)sqliteDataReader["Type"]
                                 };
                                 
                                 kiosks.Add(kiosk);
@@ -63,7 +65,7 @@ namespace Recycling_Kiosk.Controllers
         [HttpGet]
         public ActionResult Search(Kiosk location)
         {
-            Console.WriteLine("{0},{1},{2},{3},{4}", location.Address, location.Distance, location.Latitude, location.Longitude, location.Name);
+            
             using (SQLiteConnection sqliteConnection = DBConnecter.DBConnect())
             {
                 using (SQLiteCommand sqliteCommand = new SQLiteCommand("SELECT * FROM Kiosk", sqliteConnection))
@@ -80,7 +82,8 @@ namespace Recycling_Kiosk.Controllers
                                     Name = (string)sqliteDataReader["Name"],
                                     Longitude = (double)sqliteDataReader["Longitude"],
                                     Latitude = (double)sqliteDataReader["Latitude"],
-                                    Address = (string)sqliteDataReader["Address"]
+                                    Address = (string)sqliteDataReader["Address"],
+                                    KioskType = (string)sqliteDataReader["Type"]
                                 };
 
                                 kiosks.Add(kiosk);
