@@ -8,7 +8,7 @@ WebAPI Version: 1.2.1.0254
 Readme Version: 1.2.1.0254
 
 ## Table of Contents
-- [Hosting](#Hosting-&-Starting-Web-App)
+- [Hosting](#Hosting--Starting-Web-App)
 - [Users](#Users)
     - [Users - Login](#Login---GET)
     - [Users - Register](#Register---POST)
