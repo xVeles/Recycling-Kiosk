@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Device.Location;
 using System.Net;
 using System.Web.Mvc;
 
@@ -14,15 +15,19 @@ namespace Recycling_Kiosk.Controllers
         {
             using (SQLiteConnection sqliteConnection = DBConnecter.DBConnect())
             {
+                
                 using (SQLiteCommand sqliteCommand = new SQLiteCommand("SELECT * FROM Kiosk", sqliteConnection))
                 {
+                    
                     try
                     {
                         using (SQLiteDataReader sqliteDataReader = sqliteCommand.ExecuteReader())
                         {
+                            
                             List<Kiosk> kiosks = new List<Kiosk>();
                             while (sqliteDataReader.Read())
                             {
+
                                 Kiosk kiosk = new Kiosk()
                                 {
                                     Name = (string)sqliteDataReader["Name"],
@@ -30,7 +35,7 @@ namespace Recycling_Kiosk.Controllers
                                     Latitude = (double)sqliteDataReader["Latitude"],
                                     Address = (string)sqliteDataReader["Address"]
                                 };
-
+                                
                                 kiosks.Add(kiosk);
                             }
 
@@ -38,7 +43,8 @@ namespace Recycling_Kiosk.Controllers
 
                             return new JsonResult
                             {
-                                Data = kiosks
+                                Data = kiosks,
+                                JsonRequestBehavior = JsonRequestBehavior.AllowGet
                             };
                         }
 
@@ -57,6 +63,7 @@ namespace Recycling_Kiosk.Controllers
         [HttpGet]
         public ActionResult Search(Kiosk location)
         {
+            Console.WriteLine("{0},{1},{2},{3},{4}", location.Address, location.Distance, location.Latitude, location.Longitude, location.Name);
             using (SQLiteConnection sqliteConnection = DBConnecter.DBConnect())
             {
                 using (SQLiteCommand sqliteCommand = new SQLiteCommand("SELECT * FROM Kiosk", sqliteConnection))
@@ -83,20 +90,16 @@ namespace Recycling_Kiosk.Controllers
 
                             List<Kiosk> closeKiosks = kiosks.FindAll(k =>
                             {
-                                double theta = location.Longitude - k.Longitude;
+                                Console.WriteLine(k.Longitude);
+                                Console.WriteLine(k.Latitude);
+                                var sCoord = new GeoCoordinate(location.Latitude, k.Longitude);
+                                var eCoord = new GeoCoordinate(k.Latitude, location.Longitude);
 
-                                double dist = Math.Sin(Deg2rad(location.Latitude))
-                                * Math.Sin(Deg2rad(k.Latitude))
-                                + Math.Cos(Deg2rad(location.Latitude))
-                                * Math.Cos(Deg2rad(k.Latitude))
-                                * Math.Cos(Deg2rad(theta));
+                                k.Distance = sCoord.GetDistanceTo(eCoord) / 1000.0;
 
-                                dist = (Rad2deg(Math.Acos(dist))) * 60 * 1.1515;
-                                dist *= 1.609344;
+                                Console.WriteLine(k.Distance);
 
-                                k.Distance = dist;
-
-                                if (dist < 20.0) return true;
+                                if (k.Distance <= location.Distance) return true;
                                 else return false;
                             });
 
@@ -105,7 +108,8 @@ namespace Recycling_Kiosk.Controllers
                             else
                                 return new JsonResult
                                 {
-                                    Data = closeKiosks
+                                    Data = closeKiosks,
+                                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
                                 };
                         }
 
@@ -120,8 +124,5 @@ namespace Recycling_Kiosk.Controllers
                 }
             }
         }
-
-        private double Deg2rad(double degree) => degree * Math.PI / 180.0;
-        private double Rad2deg(double radian) => radian / Math.PI * 180.0;
     }
 }

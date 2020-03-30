@@ -134,3 +134,4 @@ D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\Sys
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Memory.xml
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Numerics.Vectors.xml
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Device.Portable.dll

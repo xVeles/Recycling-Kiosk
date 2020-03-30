@@ -118,8 +118,6 @@ namespace Recycling_Kiosk.Controllers
                         sqliteInsertCommand.Parameters.Add(new SQLiteParameter("@password", user.Password));
                         sqliteInsertCommand.Parameters.Add(new SQLiteParameter("@email", user.Email));
 
-                        Console.WriteLine(sqliteInsertCommand.CommandText);
-
                         try
                         {
                             sqliteInsertCommand.ExecuteNonQuery();

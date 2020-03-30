@@ -7,11 +7,10 @@ namespace Recycling_Kiosk.Utils
 {
     public class Kiosk
     {
-        public string Name;
-        public double Longitude;
-        public double Latitude;
-        public string Address;
-
-        public object Distance { get; internal set; }
+        public string Name { get; set; }
+        public double Longitude { get; set; }
+        public double Latitude { get; set; }
+        public string Address { get; set; }
+        public double Distance { get; set; }
     }
 }
