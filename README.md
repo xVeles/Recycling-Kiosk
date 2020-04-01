@@ -3,9 +3,9 @@
 # Recycling-Kiosk
 RDA's WebAPI for 399
 
-WebAPI Version: 1.2.1.1862
+WebAPI Version: 1.3.1.3511
 
-Readme Version: 1.2.1.1862
+Readme Version: 1.3.1.3511
 
 ## Table of Contents
 - [Hosting](#Hosting--Starting-Web-App)
@@ -38,8 +38,13 @@ Data Structure for *User* Class
 | Password | String |
 | Email | String |
 | Points | Int |
+| Recycle | Bool (Stored as  Int 1 or 0) |
+| Upcycle | Bool (Stored as  Int 1 or 0) |
+| Donate | Bool (Stored as  Int 1 or 0) |
 
 *Note: Points may get removed in future versions*
+
+*Recycle, Upcycle and Doante are all booleans (true/false) however are transfered as 1 (true) and 0 (false) due to the db storing them in this form. It's just easier to keep them in this form that constantly convert them in the code*
 
 ### Login - *GET*
 | Info  | Description |
@@ -89,6 +94,12 @@ Data Structure for *Kiosk* Class
 | Latitude | Double |
 | Address | String |
 | Distance | Integer |
+| Type | String |
+
+*Note: Type can either be only one of the following*
+- Recycle
+- Upcycle
+- Donate
 
 ### Kiosks - GET
 | Info  | Description |
