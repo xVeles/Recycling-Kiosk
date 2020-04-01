@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Recycling_Kiosk.Objects
+{
+    public class ShopItem
+    {
+        public string ProductID { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int Stock { get; set; }
+        public double Price { get; set; }
+    }
+}

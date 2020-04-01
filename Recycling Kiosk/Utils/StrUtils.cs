@@ -27,7 +27,7 @@ namespace Recycling_Kiosk.Utils
             return stringBuilder.ToString();
         }
 
-        public static string Santize(string input)
+        public static string Sanitize(string input)
         {
             input = Regex.Replace(input, "[^\\p{L}\\p{N} ]+", string.Empty);
             input = Regex.Replace(input, "<.*?>", string.Empty);

@@ -5,14 +5,16 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Device.Location;
 using System.Net;
-using System.Web.Mvc;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace Recycling_Kiosk.Controllers
 {
-    public class KioskController : Controller
+    public class KioskController : ApiController
     {
+        [Route("api/kiosk/kiosks")]
         [HttpGet]
-        public ActionResult Kiosks()
+        public HttpResponseMessage Kiosks()
         {
             using (SQLiteConnection sqliteConnection = DBConnecter.DBConnect())
             {
@@ -41,13 +43,11 @@ namespace Recycling_Kiosk.Controllers
                                 kiosks.Add(kiosk);
                             }
 
+                            sqliteDataReader.Close();
                             sqliteConnection.Close();
 
-                            return new JsonResult
-                            {
-                                Data = kiosks,
-                                JsonRequestBehavior = JsonRequestBehavior.AllowGet
-                            };
+
+                            return Request.CreateResponse(HttpStatusCode.OK, kiosks);
                         }
 
                     }
@@ -55,15 +55,16 @@ namespace Recycling_Kiosk.Controllers
                     {
                         sqliteConnection.Close();
 
-                        return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, "Internal Server Error: DB Insert fail - " + ex.ToString());
+                        return Request.CreateResponse(HttpStatusCode.InternalServerError, "Internal Server Error: DB Insert fail - " + ex.ToString());
                     }
 
                 }
             }
         }
 
+        [Route("api/kiosk/search")]
         [HttpGet]
-        public ActionResult Search(Kiosk location)
+        public HttpResponseMessage Search([FromBody] Kiosk location)
         {
             
             using (SQLiteConnection sqliteConnection = DBConnecter.DBConnect())
@@ -89,6 +90,7 @@ namespace Recycling_Kiosk.Controllers
                                 kiosks.Add(kiosk);
                             }
 
+                            sqliteDataReader.Close();
                             sqliteConnection.Close();
 
                             List<Kiosk> closeKiosks = kiosks.FindAll(k =>
@@ -107,13 +109,9 @@ namespace Recycling_Kiosk.Controllers
                             });
 
                             if (closeKiosks.Count == 0)
-                                return new HttpStatusCodeResult(HttpStatusCode.OK);
+                                return Request.CreateResponse(HttpStatusCode.OK, "No Kiosks within set distance");
                             else
-                                return new JsonResult
-                                {
-                                    Data = closeKiosks,
-                                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
-                                };
+                                return Request.CreateResponse(HttpStatusCode.OK, closeKiosks);
                         }
 
                     }
@@ -121,7 +119,7 @@ namespace Recycling_Kiosk.Controllers
                     {
                         sqliteConnection.Close();
 
-                        return new HttpStatusCodeResult(HttpStatusCode.InternalServerError, "Internal Server Error: DB Insert fail - " + ex.ToString());
+                        return Request.CreateResponse(HttpStatusCode.InternalServerError, "Internal Server Error: DB Insert fail - " + ex.ToString());
                     }
 
                 }
