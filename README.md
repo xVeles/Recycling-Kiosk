@@ -16,7 +16,11 @@ Readme Version: 1.4.5.4572
 - [Kiosks](#Kiosk)
     - [Kiosks - Kiosks](#Kiosks---GET)
     - [Kiosks - Search](#Search---GET)
-
+- [Shops](#Shop)
+    - [Shop - List](#List---get)
+    - [Shop - Category](#Category---get)
+    - [Shop - Search](#Search---get-1)
+    - [Shop - Purchase](#Purchase---post)
 
 ### Hosting & Starting Web App
 **Windows Hosting**
