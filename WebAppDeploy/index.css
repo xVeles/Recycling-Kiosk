@@ -1,0 +1,41 @@
+html, body {
+    margin: 0%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background-color: #DCDCDC;
+}
+
+.header {
+    text-align: center;
+    background-color: white;
+    height: 10.61vh;
+}
+
+hr {
+    border:none;
+    height: 20px;
+    height: 50px;
+    margin-top: 0;
+    box-shadow: 0 20px 20px -20px #A9A9A9;
+    margin: -50px auto 10px; 
+}
+
+.main-content {
+    height: 77.55vh;
+    overflow: auto;
+}
+
+#footNav {
+    height: 11.84vh;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+

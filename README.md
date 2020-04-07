@@ -3,9 +3,9 @@
 # Recycling-Kiosk
 RDA's WebAPI for 399
 
-WebAPI Version: 1.3.1.3511
+WebAPI Version: 1.4.5.4572
 
-Readme Version: 1.3.1.3511
+Readme Version: 1.4.5.4572
 
 ## Table of Contents
 - [Hosting](#Hosting--Starting-Web-App)
@@ -16,7 +16,11 @@ Readme Version: 1.3.1.3511
 - [Kiosks](#Kiosk)
     - [Kiosks - Kiosks](#Kiosks---GET)
     - [Kiosks - Search](#Search---GET)
-
+- [Shops](#Shop)
+    - [Shop - List](#List---get)
+    - [Shop - Category](#Category---get)
+    - [Shop - Search](#Search---get-1)
+    - [Shop - Purchase](#Purchase---post)
 
 ### Hosting & Starting Web App
 **Windows Hosting**
@@ -50,7 +54,7 @@ Data Structure for *User* Class
 | Info  | Description |
 | ------ | ------ |
 | Usage | Used to login |
-| GET URL | localhost:####/users/login |
+| GET URL | localhost:####/api/users/login |
 | Body Content | *User* data structure - *Email* & *Password* req |
 | Successful Login | *OK Status* (Code 200) with *User* class with info |
 | Unsuccessful Login | *BadRequest* (Code 400) with error message body content |
@@ -62,7 +66,7 @@ Data Structure for *User* Class
 | Info  | Description |
 | ------ | ------ |
 | Usage | Used to register a new user |
-| POST URL | *localhost:####/users/register* |
+| POST URL | *localhost:####/api/users/register* |
 | Body Content |  *User* data structure - all fields req |
 | Successful Register | *OK Status* (Code 200) with successful message body content |
 | Unsuccessful Register | *BadRequest* (Code 400) with error message body content |
@@ -76,7 +80,7 @@ Data Structure for *User* Class
 | Info  | Description |
 | ------ | ------ |
 | Usage | Used to update a users details |
-| POST URL | *localhost:####/users/update* |
+| POST URL | *localhost:####/api/users/update* |
 | Body Content |  *User* data structure - all fields req |
 | Successful Register | *OK Status* (Code 200) with successful message body content |
 | Unsuccessful Register | *BadRequest* (Code 400) with error message body content |
@@ -105,7 +109,7 @@ Data Structure for *Kiosk* Class
 | Info  | Description |
 | ------ | ------ |
 | Usage | Fetchs entire list of kiosks in database |
-| POST URL | *localhost:####/kiosk/kiosk* |
+| POST URL | *localhost:####/api/kiosk/kiosk* |
 | Body Content | Nothing |
 | Successful Fetech | *OK Status* (Code 200) with successful message body content |
 
@@ -113,9 +117,82 @@ Data Structure for *Kiosk* Class
 | Info  | Description |
 | ------ | ------------ |
 | Usage | Searches for kiosks within the *Distance* from provided location |
-| POST URL | *localhost:####/kiosk/search* |
+| POST URL | *localhost:####/api/kiosk/search* |
 | Body Content | *Kiosk* data structure - *Longitude*, *Latitude*, *Distance* req |
 | Successful Fetech | *OK Status* (Code 200) with successful message body content |
 
 *Note: Body Content maybe empty if there are no Kiosks within the Distance range*
 *Body Content is returned as a list of Kiosks within the set Distance. Units is in km (Lots of decimals)*
+
+## Shop
+### ShopItem Data Structure
+Data Structure for *ShopItem* Class
+| Field Name | Field Type|
+| ------ | ------ |
+| ProductID | String |
+| Name | String |
+| Description | String |
+| Stock | Integer |
+| Price | Double |
+
+*Note: This class is used for individual items (When listing what items can be bought from the store)*
+
+### PurchasedItem Data Strcuture
+Data Structure for *PurchasedItem* Class
+| Field Name | Field Type|
+| ------ | ------ |
+| Email | String |
+| ProductID | String |
+| Quantity | Integer |
+| Price | Double |
+
+*Note: This class is used for when purchasing an item*
+
+*Email is the email of the person that wants to purchase an item*
+
+*Price is total price (Quantity x Product Price)*
+
+### List - *GET*
+| Info  | Description |
+| ------ | ------ |
+| Usage | Fetchs entire list of shop items in database |
+| POST URL | *localhost:####/api/shop/list* |
+| Body Content | Nothing |
+| Successful Fetech | *OK Status* (Code 200) with successful message body content |
+
+*Note: Returns a list of ShopItems*
+
+### Category - *GET*
+| Info  | Description |
+| ------ | ------ |
+| Usage | Fetchs entire list of shop items in database that has matches a certain category |
+| POST URL | *localhost:####/api/shop/category?category=* |
+| URI Content | Category that you want to search for |
+| Successful Fetech | *OK Status* (Code 200) with successful message body content |
+
+*Note: Category has specific values that it searches for:*
+- Tops
+- Pants
+- Jackets
+- Socks
+- Accessories
+
+### Search - *GET*
+| Info  | Description |
+| ------ | ------ |
+| Usage | Fetchs entire list of shop items in database that has matches a certain category |
+| POST URL | *localhost:####/api/shop/search?term=* |
+| URI Content | Category that you want to search for |
+| Successful Fetech | *OK Status* (Code 200) with successful message body content |
+
+*Note: Search is based off product name*
+
+### Purchase - *POST*
+| Info  | Description |
+| ------ | ------ |
+| Usage | Used to purchase items from the store |
+| POST URL | *localhost:####/api/shop/buy* |
+| Body Content | *PurchasedItem* data structure - all fields req |
+| Successful Fetech | *OK Status* (Code 200) with successful message body content |
+
+*Note: Wanting to buy multiple items requires multiple requests. One item per request.*
