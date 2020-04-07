@@ -244,7 +244,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Objects\BoughtItem.cs" />
+    <Compile Include="Objects\PurchasedItem.cs" />
     <Compile Include="Objects\ShopItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ConfigReader.cs" />

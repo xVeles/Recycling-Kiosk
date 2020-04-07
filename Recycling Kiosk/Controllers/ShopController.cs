@@ -82,7 +82,8 @@ namespace Recycling_Kiosk.Controllers
                                     Name = (string)sqliteDataReader["Name"],
                                     Description = (string)sqliteDataReader["Description"],
                                     Stock = Convert.ToInt16(sqliteDataReader["Stock"]),
-                                    Price = (double)sqliteDataReader["Price"]
+                                    Price = (double)sqliteDataReader["Price"],
+                                    ShopImg = (string)sqliteDataReader["ShopImg"]
                                 };
 
                                 shopItems.Add(item);
@@ -152,7 +153,7 @@ namespace Recycling_Kiosk.Controllers
 
         [Route("api/shop/buy")]
         [HttpPost]
-        public HttpResponseMessage Purchase([FromBody] BoughtItem item)
+        public HttpResponseMessage Purchase([FromBody] PurchasedItem item)
         {
             using (SQLiteConnection sqliteConnection = DBConnecter.DBConnect())
             {

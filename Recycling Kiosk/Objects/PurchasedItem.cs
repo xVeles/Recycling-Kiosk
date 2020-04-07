@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Recycling_Kiosk.Objects
 {
-    public class BoughtItem
+    public class PurchasedItem
     {
         public string Email { get; set; }
         public string ProductID { get; set; }
