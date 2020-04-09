@@ -3,45 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
+    <title>RCK - Web App</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <div id="mainHeader" class="header sticky-top shadow">
+    <div id="mainHeader" class="header sticky-top">
         <h1>RCK</h1>
     </div>
 
+    <div class="container">
+        <div id="mainContent" class="main-content">
+            <div id="start-tab" class="row h-100 active">
+                <div class="col-md-12 my-auto text-center">
+                    <p>Press start to begin</p>
+                    <button id="startBtn" type="button" class="btn btn-success shadow">Start</button>
+                </div>
+            </div>
 
-    <div id="mainContent" class="main-content">
-        <div class="row h-100">
-            <div class="col-md-12 my-auto text-center">
-                <p>Press start to begin</p>
-                <button id="startBtn" type="button" class="btn btn-success shadow">Start</button>
-            </div>
-            </div>
+            <div id='account-tab' class='container h-100 hidden'>
+                    <div class='card mt-3 shadow-md'>
+                            <div class='card-body'>
+                                <div class='row'>
+                                    <div class='col'>
+                                        <p><span class='account-header text-secondary'>My Account:</span></p>
+                                        <span id='accountName' class='text-dark'>James Robertson</span>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class='card mt-3 shadow-md'>
+                        <div class='card-body'>
+                            <div class='row'>
+                                <div class='col-10'>
+                                <p><span class='account-header text-secondary'>Email</span></p>
+                                <span id='accountEmail' class='text-dark'>james.robertson@email.com</span>
+                                </div>
+                                <div class='col-2'>
+                                    <i class='right small material-icons'>mail</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='card mt-3 shadow-md'>
+                        <div class='card-body'>
+                            <p><span class='account-header text-secondary'>Password</span></p>
+                            <button id='pwdChngBtn' type='button' class='btn btn-success w-100'>Change Password</button><br>
+                        </div>
+                    </div>
+                    <div class='card mt-3 shadow-md'>
+                        <div class='card-body'>
+                            <div class='row'>
+                                <div class='col-10'>
+                                    <p><span class='account-header text-secondary'>Discount Codes</span></p>
+                                    <span id='discountCode' class='text-dark'>AENK24KN</span><br>
+                                </div>
+                                <div class='col-2'>
+                                    <i class='right small material-icons'>attach_money</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='card mt-3 shadow-md'>
+                        <div class='card-body'>
+                            <div class='row'>
+                                <div class='col-10'>
+                                    <p><span class='account-header text-secondary'>Favourite Dropoff</span></p>
+                                    <span>RCK - <span id='dropOffLocation' class='text-dark'>AENK24KN</span></span><br>
+                                </div>
+                                <div class='col-2'>
+                                <i class='right small material-icons'>location_on</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
     </div>
-
 
     <nav id="footNav" class="navbar fixed-bottom border justify-content-around bg-light navbar-light">
         <ul class="nav nav-fill w-100">
             <li class="nav-item active">
-            <a class="nav-link" href="#">Store</a>
+                <a class="nav-link" href="#"><i class="small material-icons">store</i><p>Store</p></a>
             </li>
             <li class="nav-item">
-            <a id="rckBtn" class="nav-link" href="#">RCK</a>
+                <a id="rckBtn" class="nav-link" href="#"><i class="small material-icons">loop</i><p>RCK</p></a>
             </li>
             <li class="nav-item">
-            <a id="accountBtn" class="nav-link" href="#">Account</a>
+                <a id="accountBtn" class="nav-link" href="#"><i class="small material-icons">person</i><p>Account</p></a>
             </li>
         </ul>
     </nav>
 
+        
+
 
 
     <!--bootstrap 4/Javascript links dont touch-->
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
