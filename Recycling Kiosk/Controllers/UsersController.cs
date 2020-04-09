@@ -1,4 +1,5 @@
-﻿using Recycling_Kiosk.Objects;
+﻿using Recycling_Kiosk.Modules;
+using Recycling_Kiosk.Objects;
 using Recycling_Kiosk.Utils;
 using System;
 using System.Data.SQLite;
@@ -12,11 +13,11 @@ namespace Recycling_Kiosk.Controllers
     {
         private readonly ConfigReader configReader = new ConfigReader();
 
+        [BasicAuthentication]
         [Route("api/users/login")]
         [HttpGet]
         public HttpResponseMessage Login([FromBody] User user)
         {
-            Console.WriteLine("Recieved Details: {0} {1} {2} {3} {4} {5}", user.Username, user.Firstname, user.Lastname, user.Password, user.Email, user.Points);
             using (SQLiteConnection sqliteConnection = DBConnecter.DBConnect())
             {
 
@@ -30,42 +31,28 @@ namespace Recycling_Kiosk.Controllers
                         {
                             while (sqliteDataReader.Read())
                             {
-                                string userPassword = (string)sqliteDataReader["Password"];
-                                string password = StrUtils.Hash(string.Format("{0}:{1}:{2}", user.Email, user.Password, configReader.GetString("Realm")));
+                                user.Password = "";
+                                user.Firstname = (string)sqliteDataReader["Firstname"];
+                                user.Lastname = (string)sqliteDataReader["Lastname"];
+                                user.Username = (string)sqliteDataReader["Username"];
+                                user.Recycle = Convert.ToInt16(sqliteDataReader["Recycle"]);
+                                user.Upcycle = Convert.ToInt16(sqliteDataReader["Upcycle"]);
+                                user.Donate = Convert.ToInt16(sqliteDataReader["Donate"]);
 
-                                if (password == userPassword)
-                                {
-                                    Console.WriteLine("Password Matched");
-                                    password = "";
-                                    user.Password = "";
-                                    user.Firstname = (string)sqliteDataReader["Firstname"];
-                                    user.Lastname = (string)sqliteDataReader["Lastname"];
-                                    user.Username = (string)sqliteDataReader["Username"];
-                                    user.Recycle = Convert.ToInt16(sqliteDataReader["Recycle"]);
-                                    user.Upcycle = Convert.ToInt16(sqliteDataReader["Upcycle"]);
-                                    user.Donate = Convert.ToInt16(sqliteDataReader["Donate"]);
+                                sqliteDataReader.Close();
+                                sqliteConnection.Close();
 
-                                    sqliteDataReader.Close();
-                                    sqliteConnection.Close();
-
-                                    return Request.CreateResponse(HttpStatusCode.OK, user);
-                                }
-                                else
-                                {
-                                    sqliteDataReader.Close();
-                                    sqliteConnection.Close();
-
-                                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Username/Email or Password");
-                                }
+                                return Request.CreateResponse(HttpStatusCode.OK, user);
                             }
 
+                            sqliteDataReader.Close();
                             sqliteConnection.Close();
                         }
                     }
                     catch (Exception ex)
                     {
                         sqliteConnection.Close();
-                        return Request.CreateResponse(HttpStatusCode.InternalServerError, "Internal Server Error: DB Insert fail - " + ex.ToString());
+                        return Request.CreateResponse(HttpStatusCode.InternalServerError, "Internal Server Error: DB Select fail - " + ex.ToString());
                     }
                 }
             }
@@ -107,6 +94,8 @@ namespace Recycling_Kiosk.Controllers
                                     return Request.CreateResponse(HttpStatusCode.BadRequest, errorMsg);
                                 }
                             }
+
+                            sqliteDataReader.Close();
                         }
                     }
                     catch
@@ -143,7 +132,8 @@ namespace Recycling_Kiosk.Controllers
                 }
             }
         }
-        
+
+        [BasicAuthentication]
         [Route("api/users/update")]
         [HttpPost]
         public HttpResponseMessage Update([FromBody] User user)

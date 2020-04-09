@@ -244,6 +244,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Modules\BasicAuthentication .cs" />
     <Compile Include="Objects\PurchasedItem.cs" />
     <Compile Include="Objects\ShopItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

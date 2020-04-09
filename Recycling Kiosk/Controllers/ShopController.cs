@@ -1,4 +1,5 @@
-﻿using Recycling_Kiosk.Objects;
+﻿using Recycling_Kiosk.Modules;
+using Recycling_Kiosk.Objects;
 using Recycling_Kiosk.Utils;
 using System;
 using System.Collections.Generic;
@@ -151,6 +152,7 @@ namespace Recycling_Kiosk.Controllers
             }
         }
 
+        [BasicAuthentication]
         [Route("api/shop/buy")]
         [HttpPost]
         public HttpResponseMessage Purchase([FromBody] PurchasedItem item)

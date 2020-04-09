@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Recycling_Kiosk.Modules;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,6 +10,8 @@ namespace Recycling_Kiosk.Controllers
 {
     public class ValuesController : ApiController
     {
+        [BasicAuthentication]
+        [Route("api/values/test")]
         [HttpGet]
         public IEnumerable<string> Values()
         {
