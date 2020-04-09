@@ -3,6 +3,7 @@ let startBtn = document.getElementById("startBtn");
 let accountBtn = document.getElementById("accountBtn");
 let rckBtn = document.getElementById("rckBtn");
 let pwdChngBtn = document.getElementById("pwdChngBtn");
+let storeBtn = document.getElementById("storeBtn");
 
 //area for page
 let mainHeader = document.getElementById("mainHeader");
@@ -21,28 +22,24 @@ startBtn.addEventListener("click", function() {
 
 accountBtn.addEventListener("click", function() {
     $('.carousel').carousel(2);
+    storeBtn.setAttribute("class", "nav-link text-secondary");
+    rckBtn.setAttribute("class", "nav-link text-secondary");
+    accountBtn.setAttribute("class", "nav-link text-primary");
 });
 
 rckBtn.addEventListener("click", function() {
     $('.carousel').carousel(1);
+    storeBtn.setAttribute("class", "nav-link text-secondary");
+    rckBtn.setAttribute("class", "nav-link text-primary");
+    accountBtn.setAttribute("class", "nav-link text-secondary");
 });
 
-function loadAccount() 
-{
-    disableAllTabs();
-    accountContent.setAttribute("class", "container h-100 active");
-}
-
-function loadRCK() {
-    disableAllTabs();
-    startContent.setAttribute("class", "row h-100 active");
-}
-
-function disableAllTabs()
-{
-    startContent.setAttribute("class", "row h-100 hidden");
-    accountContent.setAttribute("class", "container h-100 hidden");
-}
+storeBtn.addEventListener("click", function() {
+    $('.carousel').carousel(0);
+    storeBtn.setAttribute("class", "nav-link text-primary");
+    rckBtn.setAttribute("class", "nav-link text-secondary");
+    accountBtn.setAttribute("class", "nav-link text-secondary");
+})
 
 function getLocation() {
     if (navigator.geolocation) {
