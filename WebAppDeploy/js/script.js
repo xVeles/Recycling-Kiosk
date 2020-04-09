@@ -16,15 +16,15 @@ let startContent = document.getElementById("start-tab");
 
 //button eventlisteners
 startBtn.addEventListener("click", function() {
-    alert("I have been clicked");
+    getLocation();
 });
 
 accountBtn.addEventListener("click", function() {
-    loadAccount();
+    $('.carousel').carousel(2);
 });
 
 rckBtn.addEventListener("click", function() {
-    loadRCK();
+    $('.carousel').carousel(1);
 });
 
 function loadAccount() 
@@ -43,3 +43,16 @@ function disableAllTabs()
     startContent.setAttribute("class", "row h-100 hidden");
     accountContent.setAttribute("class", "container h-100 hidden");
 }
+
+function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        console.log("Geolocation is not supported by this browser.");
+    }
+  }
+  
+  function showPosition(position) {
+   console.log("Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude);
+  }

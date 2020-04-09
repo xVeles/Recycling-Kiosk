@@ -8,16 +8,6 @@ body {
     background-color: #DCDCDC;
 }
 
-.hidden 
-{
-    display: none !important; 
-}
-
-.active
-{
-    display: block !important;
-}
-
 .header {
     text-align: center;
     background-color: white;

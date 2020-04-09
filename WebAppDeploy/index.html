@@ -15,15 +15,22 @@
 
     <div class="container">
         <div id="mainContent" class="main-content">
-            <div id="start-tab" class="row h-100 active">
-                <div class="col-md-12 my-auto text-center">
-                    <p>Press start to begin</p>
-                    <button id="startBtn" type="button" class="btn btn-success shadow">Start</button>
-                </div>
-            </div>
-
-            <div id='account-tab' class='container h-100 hidden'>
-                    <div class='card mt-3 shadow-md'>
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item">
+                        <img src="..." class="d-block w-100" alt="...">
+                    </div>
+                  <div class="carousel-item active">
+                    <div id="start-tab" class="row h-100">
+                        <div class="col-md-12 my-auto text-center">
+                            <p>Press start to begin</p>
+                            <button id="startBtn" type="button" class="btn btn-success shadow">Start</button>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <div id='account-tab' class='container h-100'>
+                        <div class='card mt-3 shadow-md'>
                             <div class='card-body'>
                                 <div class='row'>
                                     <div class='col'>
@@ -32,53 +39,61 @@
                                     </div>
                                 </div>
                             </div>
-                    </div>
-                    <div class='card mt-3 shadow-md'>
-                        <div class='card-body'>
-                            <div class='row'>
-                                <div class='col-10'>
-                                <span class='account-header text-secondary'>Email</span><br>
-                                <span id='accountEmail' class='text-dark'>james.robertson@email.com</span>
+                        </div>
+                        <div class='card mt-3 shadow-md'>
+                            <div class='card-body'>
+                                <div class='row'>
+                                    <div class='col-10'>
+                                    <span class='account-header text-secondary'>Email</span><br>
+                                    <span id='accountEmail' class='text-dark'>james.robertson@email.com</span>
+                                    </div>
+                                    <div class='col-2'>
+                                        <i class='right small material-icons'>mail</i>
+                                    </div>
                                 </div>
-                                <div class='col-2'>
-                                    <i class='right small material-icons'>mail</i>
+                            </div>
+                        </div>
+                        <div class='card mt-3 shadow-md'>
+                            <div class='card-body'>
+                                <span class='account-header text-secondary'>Password</span><br>
+                                <button id='pwdChgBtn' type='button' class='btn btn-success w-100'>Change Password</button>
+                            </div>
+                        </div>
+                        <div class='card mt-3 shadow-md'>
+                            <div class='card-body'>
+                                <div class='row'>
+                                    <div class='col-10'>
+                                        <span class='account-header text-secondary'>Discount Codes</span><br>
+                                        <span id='discountCode' class='text-dark'>AENK24KN</span>
+                                    </div>
+                                    <div class='col-2'>
+                                        <i class='right small material-icons'>attach_money</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='card mt-3 shadow-md'>
+                            <div class='card-body'>
+                                <div class='row'>
+                                    <div class='col-10'>
+                                        <span class='account-header text-secondary'>Favourite Dropoff</span><br>
+                                        <span>RCK - <span id='dropOffLocation' class='text-dark'>AENK24KN</span></span>
+                                    </div>
+                                    <div class='col-2'>
+                                        <i class='right small material-icons'>location_on</i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class='card mt-3 shadow-md'>
-                        <div class='card-body'>
-                            <span class='account-header text-secondary'>Password</span><br>
-                            <button id='pwdChgBtn' type='button' class='btn btn-success w-100'>Change Password</button>
-                        </div>
-                    </div>
-                    <div class='card mt-3 shadow-md'>
-                        <div class='card-body'>
-                            <div class='row'>
-                                <div class='col-10'>
-                                    <span class='account-header text-secondary'>Discount Codes</span><br>
-                                    <span id='discountCode' class='text-dark'>AENK24KN</span>
-                                </div>
-                                <div class='col-2'>
-                                    <i class='right small material-icons'>attach_money</i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='card mt-3 shadow-md'>
-                        <div class='card-body'>
-                            <div class='row'>
-                                <div class='col-10'>
-                                    <span class='account-header text-secondary'>Favourite Dropoff</span><br>
-                                    <span>RCK - <span id='dropOffLocation' class='text-dark'>AENK24KN</span></span>
-                                </div>
-                                <div class='col-2'>
-                                <i class='right small material-icons'>location_on</i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
+              </div>
+
+
+            
+
+            
         </div>
     </div>
 
@@ -105,5 +120,6 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/init.js"></script>
 </body>
 </html>
