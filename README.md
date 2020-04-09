@@ -3,12 +3,13 @@
 # Recycling-Kiosk
 RDA's WebAPI for 399
 
-WebAPI Version: 1.4.5.4572
+WebAPI Version: 1.5.1.1024
 
-Readme Version: 1.4.5.4572
+Readme Version: 1.5.1.1024
 
 ## Table of Contents
 - [Hosting](#Hosting--Starting-Web-App)
+- [BasicAuthentication](#Basic-Authentication)
 - [Users](#Users)
     - [Users - Login](#Login---GET)
     - [Users - Register](#Register---POST)
@@ -30,6 +31,11 @@ Required to use **IISExpress** to host Web API in PowerShell
 E.G *& "C:\Program Files\IIS Express\IISExpress.exe" /port:8189 /path:D:\Documents\ComSci399*
 
 Required to modify Web.config and modify "DataRoot" field to match the path used in the the command
+
+## Basic Authentication
+Some requests will have a \[BasicAuthentication\] tag. This indicates that when you are forming the XHR (XMLHttpRequest) request, you will need to declare it `withCredentials = true`
+
+The credentials must be the user's login details, if you fail to provide or if the login details are incorrect the server will reply with a *Error - 401 Unauthorized*
 
 ## Users
 ### Data Structure
@@ -55,7 +61,8 @@ Data Structure for *User* Class
 | ------ | ------ |
 | Usage | Used to login |
 | GET URL | localhost:####/api/users/login |
-| Body Content | *User* data structure - *Email* & *Password* req |
+| [BasicAuthentication](#Basic-Authentication) | Required |
+| Body Content | *User* data structure - *Email*  req |
 | Successful Login | *OK Status* (Code 200) with *User* class with info |
 | Unsuccessful Login | *BadRequest* (Code 400) with error message body content |
 
@@ -81,6 +88,7 @@ Data Structure for *User* Class
 | ------ | ------ |
 | Usage | Used to update a users details |
 | POST URL | *localhost:####/api/users/update* |
+| [BasicAuthentication](#Basic-Authentication) | Required |
 | Body Content |  *User* data structure - all fields req |
 | Successful Register | *OK Status* (Code 200) with successful message body content |
 | Unsuccessful Register | *BadRequest* (Code 400) with error message body content |
@@ -158,7 +166,7 @@ Data Structure for *PurchasedItem* Class
 | Usage | Fetchs entire list of shop items in database |
 | POST URL | *localhost:####/api/shop/list* |
 | Body Content | Nothing |
-| Successful Fetech | *OK Status* (Code 200) with successful message body content |
+| Successful Get | *OK Status* (Code 200) with successful message body content |
 
 *Note: Returns a list of ShopItems*
 
@@ -168,7 +176,7 @@ Data Structure for *PurchasedItem* Class
 | Usage | Fetchs entire list of shop items in database that has matches a certain category |
 | POST URL | *localhost:####/api/shop/category?category=* |
 | URI Content | Category that you want to search for |
-| Successful Fetech | *OK Status* (Code 200) with successful message body content |
+| Successful Get | *OK Status* (Code 200) with successful message body content |
 
 *Note: Category has specific values that it searches for:*
 - Tops
@@ -183,7 +191,7 @@ Data Structure for *PurchasedItem* Class
 | Usage | Fetchs entire list of shop items in database that has matches a certain category |
 | POST URL | *localhost:####/api/shop/search?term=* |
 | URI Content | Category that you want to search for |
-| Successful Fetech | *OK Status* (Code 200) with successful message body content |
+| Successful Get | *OK Status* (Code 200) with successful message body content |
 
 *Note: Search is based off product name*
 
@@ -192,7 +200,8 @@ Data Structure for *PurchasedItem* Class
 | ------ | ------ |
 | Usage | Used to purchase items from the store |
 | POST URL | *localhost:####/api/shop/buy* |
+| [BasicAuthentication](#Basic-Authentication) | Required |
 | Body Content | *PurchasedItem* data structure - all fields req |
-| Successful Fetech | *OK Status* (Code 200) with successful message body content |
+| Successful Post | *OK Status* (Code 200) with successful message body content |
 
 *Note: Wanting to buy multiple items requires multiple requests. One item per request.*
