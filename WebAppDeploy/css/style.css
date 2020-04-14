@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 html, body {
     margin: 0%;
     height: 100%;
@@ -84,4 +85,103 @@ span.account-header {
 .shadow-md {
     -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
             box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+=======
+html, body {
+    margin: 0%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background-color: #DCDCDC;
+}
+
+.header {
+    text-align: center;
+    background-color: white;
+    height: 10.61vh;
+}
+
+hr {
+    border:none;
+    height: 20px;
+    height: 50px;
+    margin-top: 0;
+    box-shadow: 0 20px 20px -20px #A9A9A9;
+    margin: -50px auto 10px; 
+}
+
+.main-content {
+    height: 77.55vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#footNav {
+    height: 11.84vh;
+}
+
+.nav-item a p
+{
+    font-weight: bold;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+i.left {
+    float: left;
+    margin-right: 15px;
+}
+  
+i.right {
+    float: right;
+    margin-left: 15px;
+}
+  
+i.tiny {
+    font-size: 1rem;
+}
+  
+i.small {
+    font-size: 2rem;
+}
+  
+i.medium {
+    font-size: 4rem;
+}
+  
+i.large {
+    font-size: 6rem;
+}
+
+span.account-header {
+    font-weight: bold;
+}
+
+.shadow-md {
+    -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    margin-bottom: 16px;
+}
+
+.hidden {
+    display: none !important; 
+}
+
+.show {
+    display: block !important;
+}
+
+#loading img {
+    vertical-align: middle;
+    border-style: none;
+    margin-top: 25%;
+    overflow: hidden;
+    position: absolute;
+>>>>>>> Stashed changes
 }
