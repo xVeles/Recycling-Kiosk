@@ -5,6 +5,11 @@ let rckBtn = document.getElementById("rckBtn");
 let pwdChngBtn = document.getElementById("pwdChngBtn");
 let storeBtn = document.getElementById("storeBtn");
 
+let topsBtn = document.getElementById("topsBtn");
+let pantsBtn = document.getElementById("pantsBtn");
+let jacketsBtn = document.getElementById("jacketsBtn");
+let accessoriesBtn = document.getElementById("accessoriesBtn");
+
 //area for page
 let mainHeader = document.getElementById("mainHeader");
 let mainContent = document.getElementById("mainContent");
@@ -53,3 +58,16 @@ function getLocation() {
    console.log("Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude);
   }
+
+  //Store eventlisteners 
+pantsBtn.addEventListener("click", function(){
+    $('#myTab a').on('click', function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+      })
+    $('#myTab a[href="#pills-tops"]').tab('show') // Select tab by name
+    $('#myTab a[href="#pills-pants"]').tab('show')
+    $('#myTab a[href="#pills-jacket"]').tab('show')
+    $('#myTab a[href="#pills-accessories"]').tab('show') 
+    }
+)
