@@ -34,7 +34,7 @@ function init()
       //button eventlisteners
     startBtn.addEventListener("click", function() {
         getLocation();
-    });
+    }); 
     
     accountBtn.addEventListener("click", function() {
         carouselSlideTo(2);
