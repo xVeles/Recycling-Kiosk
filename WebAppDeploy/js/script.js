@@ -129,11 +129,12 @@ function showMap(position)
             console.log(jsonText);
             map.addObjects(kioskList);
         }
+        loading.setAttribute("class", "hidden");
     }
 
     xmlRequester.send(null);
 
-    loading.setAttribute("class", "hidden");
+    
 
     
     //rckMarker = new H.map.Marker({ lat: -36.873081, lng: 174.620244 }, { icon:rckIcon });
