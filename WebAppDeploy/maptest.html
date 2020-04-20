@@ -1,78 +1,35 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
-    type="text/javascript" charset="utf-8"></script>
-    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
-    type="text/javascript" charset="utf-8"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  </head>
-  <body>
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item">
-            <h2>Test 2</h2>
-          </div>
-          <div class="carousel-item active">
-            <button style="margin-left: 50% " onmousedown="getLocation();">Push Me!</button>
-            <div style="" id="mapContainer"></div>
-          </div>
-          <div class="carousel-item">
-            <H2>tEST </H2>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    
-    <script>
-    $('.carousel').carousel({
-        interval: false
-    })
-        var longitude, latitude;
-        
-      // Initialize the platform object:
-      var platform = new H.service.Platform({
-        'apikey': 'bjkfk3pJqU3BF9q5_wxtcx5M03kpRxaUUsKOlFG18FA'
-      });
-
-      // Obtain the default map types from the platform object
-      var maptypes = platform.createDefaultLayers();
-      
-      // Instantiate (and display) a map object:
-      
-
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else { 
-                console.log("Geolocation is not supported by this browser.");
-            }
-        }
-  
-        function showPosition(position) {
-            console.log(position.coords.latitude);
-            console.log(position.coords.longitude);
-            latitude = position.coords.latitude;
-            longitude = position.coords.longitude;
-
-            var map = new H.Map(
-                document.getElementById('mapContainer'),
-                maptypes.vector.normal.map,
-                {
-                zoom: 16,
-                center: { lng: longitude, lat: latitude }
-                });
-                }
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>Interactive base map</title>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="demo.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="../template.css" />
+    <script type="text/javascript" src='../test-credentials.js'></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+  <script type="text/javascript" src='../js-examples-rendering-helpers/iframe-height.js'></script></head>
+  <body id="markers-on-the-map">
+    <div class="page-header">
+        <h1>Interactive base map</h1>
+        <p>Retrieve information associated with the map features</p>
+    </div>
+    <p>This example demonstrates how to enable the interactions with the base map features. The interactions are enabled for the countries'
+      cities', towns' and neighbourhoods' labels. When these labels are clicked the info bubble with the information about the label is shown.
+    </p>
+    <div id="map"></div>
+    <h3>Code</h3>
+    <p>The code below adds a <codeph>change</codeph> event listener to the instance of the <code>H.map.Style</code> associated with the
+      layer's provider. Within this listener data layers 'places' and 'places.populated-places' are set as interactive and the
+      <code>tap</code> event listener is assigned to display the information in the info bubble. Please refer to the
+      <a href="https://developer.here.com/documentation/maps/common/credentials.html">Developer Guide</a> for more information
+      about the vector styles.
+    </p>
+    <script type="text/javascript" src='demo.js'></script>
   </body>
 </html>

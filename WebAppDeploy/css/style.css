@@ -95,5 +95,13 @@ span.account-header {
     margin-top: 25%;
     overflow: hidden;
     position: absolute;
->>>>>>> Stashed changes
+}
+
+a.nav-link {
+    cursor: pointer;
+}
+
+.no-pad
+{
+    padding: 0 !important;
 }
