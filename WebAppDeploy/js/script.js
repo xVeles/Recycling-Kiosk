@@ -87,6 +87,8 @@ function showMap(position)
 {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
+    console.log("lat:" + latitude);
+    console.log("lng:" + longitude);
 
     // Generate Map
     map = new H.Map(
@@ -109,31 +111,34 @@ function showMap(position)
     const xmlRequester = new XMLHttpRequest();
     const kioskUrl = url + "api/kiosk/kiosks";
     xmlRequester.open("GET", kioskUrl, true);
-    //xmlRequester.setRequestHeader("Access-Control-Allow-Origin", "*");
 
-    let kioskList = [];
+    var kioskList = [];
 
+    //let coords;
+    
     xmlRequester.onload = () =>
     {
         const jsonText = JSON.parse(xmlRequester.responseText);
         if (jsonText.length != 0)
         {
-            let rck = new H.map.Icon("imgs/rck_location-24px.svg");
+            let rckIcon = new H.map.Icon("imgs/rck_location-24px.svg");
             for (let i = 0; i < jsonText.length; i++)
             {
-                let kioskLatitude = jsonText[i].Latitude;
-                let kioskLongitude = jsonText[i].Longitude
-                rckMarker = new H.map.Marker({ lat: kioskLatitude, lng: kioskLongitude }, { icon:rck });
-                map.addObject(rckMarker);
+                kioskList.push(new H.map.Marker({lng:jsonText[i].Longitude,lat:jsonText[i].Latitude}, { icon:rckIcon }));    
             }
+            console.log(jsonText);
+            map.addObjects(kioskList);
         }
     }
 
     xmlRequester.send(null);
 
     loading.setAttribute("class", "hidden");
+
     
-    //kioskList.setAttribute("class", "list-group");
+    //rckMarker = new H.map.Marker({ lat: -36.873081, lng: 174.620244 }, { icon:rckIcon });
+    
+
 
     // TODO: Fetch from Web API
     // Foreach add list group
