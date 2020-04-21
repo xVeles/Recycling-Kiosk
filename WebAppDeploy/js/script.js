@@ -10,6 +10,7 @@ let pantsBtn = document.getElementById("pantsBtn");
 let jacketsBtn = document.getElementById("jacketsBtn");
 let accessoriesBtn = document.getElementById("accessoriesBtn");
 
+
 //area for page
 let mainHeader = document.getElementById("mainHeader");
 let mainContent = document.getElementById("mainContent");
@@ -59,15 +60,16 @@ function getLocation() {
     "<br>Longitude: " + position.coords.longitude);
   }
 
-  //Store eventlisteners 
-pantsBtn.addEventListener("click", function(){
-    $('#myTab a').on('click', function (e) {
-        e.preventDefault()
-        $(this).tab('show')
-      })
-    $('#myTab a[href="#pills-tops"]').tab('show') // Select tab by name
-    $('#myTab a[href="#pills-pants"]').tab('show')
-    $('#myTab a[href="#pills-jacket"]').tab('show')
-    $('#myTab a[href="#pills-accessories"]').tab('show') 
-    }
-)
+//Store eventlisteners 
+$('#store-tab a').on('click', function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+
+// $('#store-tab a[href="#tops"]').tab('show') // Select tab by name
+// $('#store-tab a[href="#pants"]').tab('show') // Select tab by name
+// $('#store-tab a[href="#jackets"]').tab('show') // Select tab by name
+// $('#store-tab a[href="#accessories"]').tab('show') // Select tab by name
+
+
+$('#myModal').modal('show')
