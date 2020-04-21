@@ -11,7 +11,7 @@ body {
 .header {
     text-align: center;
     background-color: white;
-    height: 10.61vh;
+    padding-top: .4rem;
 }
 
 hr {
@@ -27,6 +27,7 @@ hr {
     height: 77.55vh;
     overflow-x: hidden;
     overflow-y: auto;
+    padding-top: .5rem;
 }
 
 #footNav {
@@ -104,4 +105,31 @@ a.nav-link {
 .no-pad
 {
     padding: 0 !important;
+}
+
+.text-tiny
+{
+    font-size: 65%;
+}
+
+.text-small
+{
+    font-size: 70%;
+}
+
+.address-text
+{
+    margin-bottom: 0;
+}
+
+.img-icon
+{
+    padding: .25rem;
+    max-width: 100%;
+    height: auto;
+}
+
+.no-y-overflow
+{
+    overflow-y: hidden;
 }

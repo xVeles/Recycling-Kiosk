@@ -12,9 +12,11 @@
         <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
         <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
         <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+        <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
     </head>
     <body>
-        <div id="mainHeader" class="header sticky-top mx-auto" style="width: auto;">
+        <div id="mainHeader" class="header sticky-top mx- border bg-light" style="width: auto;">
             <h1>RCK</h1>
         </div>
     
@@ -25,7 +27,7 @@
                         <div class="carousel-item">
                             <h1>Shop</h1>
                         </div>
-                        <div class="carousel-item active">
+                        <div class="carousel-item active no-y-overflow">
                             <div id="start-tab" class="h-100 show">
                                 <div class="col-md-12 my-auto text-center">
                                     <p>Press start to begin</p>
@@ -106,6 +108,27 @@
             </div>
         </div>
     
+        <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <img src="imgs/rck_location-24px.svg" class="img-icon">
+                  <h5 class="modal-title" id="mapModalLabel"></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <h5>Address: </h5>
+                  <p><address id="address-field"></address></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary disabled" data-dismiss="modal">WIP</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
     
         <nav id="footNav" class="navbar fixed-bottom border justify-content-around bg-light navbar-light">
             <ul class="nav nav-fill w-100">
