@@ -1,7 +1,5 @@
 html, body {
     margin: 0%;
-    
-    overflow: hidden;
 }
 
 body {
@@ -12,6 +10,9 @@ body {
     text-align: center;
     background-color: white;
     padding-top: .4rem;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 hr {
@@ -25,9 +26,8 @@ hr {
 
 .main-content {
     height: 77.55vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding-top: .5rem;
+    margin-top: .5rem;
+    overflow-x: hidden; 
 }
 
 #footNav {
@@ -56,6 +56,7 @@ i.right {
     margin-left: 15px;
 }
   
+
 i.tiny {
     font-size: 1rem;
 }
@@ -79,7 +80,6 @@ span.account-header {
 .shadow-md {
     -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
             box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-    margin-bottom: 16px;
 }
 
 .hidden {
@@ -88,6 +88,28 @@ span.account-header {
 
 .show {
     display: block !important;
+}
+
+.overflow-allow
+{
+    overflow: visible !important;
+}
+
+.no-y-overflow
+{
+    overflow-y: hidden;
+}
+
+.shop-nav
+{
+    top: 0;
+    margin-bottom: .85rem;
+}
+
+.shop-nav ul li
+{
+    background-color: white;
+    border-radius: .25rem;
 }
 
 #loading img {
@@ -127,9 +149,4 @@ a.nav-link {
     padding: .25rem;
     max-width: 100%;
     height: auto;
-}
-
-.no-y-overflow
-{
-    overflow-y: hidden;
 }
