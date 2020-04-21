@@ -9,32 +9,33 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <div id="mainHeader" class="header sticky-top">
+    <div id="mainHeader" class="header">
         <h1>RCK</h1>
     </div>
 
     <div class="container">
         <div id="mainContent" class="main-content">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
+                <div class="carousel-inner overflow-allow">
                     <div class="carousel-item">
-                        
-                        <ul class="nav nav-pills mb-3 nav-justified" id="store-tab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="tops-tab" data-toggle="tab" href="#tops" role="tab" aria-controls="tops" aria-selected="true">Tops</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" id="pants-tab" data-toggle="tab" href="#pants" role="tab" aria-controls="pants" aria-selected="false">Pants</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" id="jackets-tab" data-toggle="tab" href="#jackets" role="tab" aria-controls="jackets" aria-selected="false">Jackets</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="accessories-tab" data-toggle="tab" href="#accessories" role="tab" aria-controls="accessories" aria-selected="false">Accessories</a>
-                            </li>
-                          </ul>
-                          <div class="store-content" id="storeContent">
-                              <div class="tab-content">
+                        <div class="shop-nav sticky-top">
+                            <ul class="nav nav-pills mb-3 nav-justified" id="store-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="tops-tab" data-toggle="tab" href="#tops" role="tab" aria-controls="tops" aria-selected="true">Tops</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" id="pants-tab" data-toggle="tab" href="#pants" role="tab" aria-controls="pants" aria-selected="false">Pants</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" id="jackets-tab" data-toggle="tab" href="#jackets" role="tab" aria-controls="jackets" aria-selected="false">Jackets</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="accessories-tab" data-toggle="tab" href="#accessories" role="tab" aria-controls="accessories" aria-selected="false">Accessories</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="store-content" id="storeContent">
+                            <div class="tab-content">
                                 <div class="tab-pane fade show active" id="tops" role="tabpanel" aria-labelledby="tops-tab">
                                     <div class= "tab-plane active" id = "pills-tops-tab" role = "tabpanel" aria-labelledby="pills-tops">
                                         <div class="row row-cols-1 row-cols-md-2">
@@ -51,8 +52,7 @@
                                         </div>
                                     </div>
                                 </div>
-    
-    
+
                                 <div class="tab-pane fade" id="pants" role="tabpanel" aria-labelledby="pants-tab">
                                     <div class="row row-cols-1 row-cols-md-2">
                                         <div class="col mb-4">
@@ -65,13 +65,31 @@
                                                     </div>
                                             </div>
                                         </div>
+                                        <div class="col mb-4">
+                                            <div class="card" style="width: 18rem;">
+                                                <img src="test-pants.jpg" class="card-img-top" alt="Pants">
+                                                    <div class="card-body">
+                                                        <p class="card-text">Pants</p>
+                                                        <p class="card-text">Size: L</p>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> Add To Cart </button>                                        
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="col mb-4">
+                                            <div class="card" style="width: 18rem;">
+                                                <img src="test-pants.jpg" class="card-img-top" alt="Pants">
+                                                    <div class="card-body">
+                                                        <p class="card-text">Pants</p>
+                                                        <p class="card-text">Size: L</p>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> Add To Cart </button>                                        
+                                                    </div>
+                                            </div>
+                                        </div>
                                     </div>    
                                 </div>
-                              </div>
-
-
-                            <div class="tab-pane fade" id="jackets" role="tabpanel" aria-labelledby="jackets-tab">Jacket</div>
-                            <div class="tab-pane fade" id="accessories" role="tabpanel" aria-labelledby="accessories-tab">Accessories</div>
+                                <div class="tab-pane fade" id="jackets" role="tabpanel" aria-labelledby="jackets-tab">Jacket</div>
+                                <div class="tab-pane fade" id="accessories" role="tabpanel" aria-labelledby="accessories-tab">Accessories</div>
+                            </div>
                           </div>
 
                           <script>
