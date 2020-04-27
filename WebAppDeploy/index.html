@@ -16,17 +16,58 @@
         <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
     </head>
     <body>
-        <div id="mainHeader" class="header sticky-top mx- border bg-light" style="width: auto;">
+        <div id="mainHeader" class="header border bg-light" style="width: auto;">
             <h1>RCK</h1>
         </div>
     
         <div class="container">
             <div id="mainContent" class="main-content">
                 <div id="carouselMainMenu" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
+                    <div class="carousel-inner overflow-allow">
                         <div class="carousel-item">
-                            <h1>Shop</h1>
-                        </div>
+                            <div class="shop-nav sticky-top">
+                                <ul class="nav nav-pills mb-3 nav-justified" id="store-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="tops-tab" data-toggle="tab" href="#tops" role="tab" aria-controls="tops" aria-selected="true">Tops</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a class="nav-link" id="pants-tab" data-toggle="tab" href="#pants" role="tab" aria-controls="pants" aria-selected="false">Pants</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a class="nav-link" id="jackets-tab" data-toggle="tab" href="#jackets" role="tab" aria-controls="jackets" aria-selected="false">Jackets</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="accessories-tab" data-toggle="tab" href="#accessories" role="tab" aria-controls="accessories" aria-selected="false">Accessories</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="cart-tab" data-toggle="tab" href="#cart" role="tab" aria-controls="cart" aria-selected="false">Cart</a>
+                                    </li>
+                                </ul>
+                                <div class="alert" id="shop-alert"></div>
+                            </div>
+                            <div class="store-content" id="storeContent">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="tops" role="tabpanel" aria-labelledby="tops-tab"></div>
+                                    <div class="tab-pane fade" id="pants" role="tabpanel" aria-labelledby="pants-tab"></div>
+                                    <div class="tab-pane fade" id="jackets" role="tabpanel" aria-labelledby="jackets-tab"></div>
+                                    <div class="tab-pane fade" id="accessories" role="tabpanel" aria-labelledby="accessories-tab"></div>
+                                    <div class="tab-pane fade" id="cart" role="tabpanel" aria-labelledby="cart-tab">You're cart is looking empty add some stuff to it!
+                                        <div class="row row-cols-4">
+                                            <div class="col">
+                                                <div class="card">
+                                                    <img src="imgs/starwars-tshirt.jpg" class="card-img-top" alt="Star wars T shirt">
+                                                    <div class="card-body">
+                                                        <p class="card-text">Star Wars Vintage T-Shirt</p>
+                                                        <p class="card-text">Size: L</p>
+                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"> Remove </button>                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
                         <div class="carousel-item active no-y-overflow">
                             <div id="start-tab" class="h-100 show">
                                 <div class="col-md-12 my-auto text-center">
@@ -124,6 +165,41 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary disabled" data-dismiss="modal">WIP</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="shopModal" tabindex="-1" role="dialog" aria-labelledby="shopModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 id="shop-item-title"></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img id="shop-item-img" style="max-width: 14rem; max-height: 14rem;">
+                            </div>
+                            <div class="col-md-6">
+                                <h5 id="shop-item-name"></h5>
+                                <span class="text-tiny text-secondary" id="shop-item-id"></span>
+                                <p id="shop-item-stock"></p>
+                                <p id="shop-item-desc"></p>
+                                <label>Quantity: </label>
+                                <select class="custom-select" id="shop-item-quantity"></select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                  <button type="button" id="add-to-cart" class="btn btn-primary disabled">Add to Cart</button>
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
               </div>
