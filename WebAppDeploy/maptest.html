@@ -1,0 +1,160 @@
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>RCK - Web App</title>
+    <link rel="icon" type="image/svg+xml" href="imgs/icon.svg">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons" >
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"type="text/javascript" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="mainHeader" class="header sticky-top mx-auto" style="width: auto;">
+      <h1>RCK</h1>
+    </div>
+    <div class="container">
+      <div id="mainContent" class="main-content">
+        <div id="carouselMainMenu" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item">
+              <h1>Shop</h1>
+            </div>
+            <div class="carousel-item active">
+              <button style="margin-left: 50% " onmousedown="getLocation();">Push Me!</button>
+                <div class="col">
+                  <div id="mapContainer"></div>
+              </div>
+              
+              
+            </div>
+            <div class="carousel-item">
+              <div id='account-tab' class='container h-100'>
+                  <div class='card mt-3 shadow-md'>
+                      <div class='card-body'>
+                          <div class='row'>
+                              <div class='col'>
+                                  <span class='account-header text-secondary'>My Account:</span><br>
+                                  <span id='accountName' class='text-dark'>James Robertson</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class='card mt-3 shadow-md'>
+                      <div class='card-body'>
+                          <div class='row'>
+                              <div class='col-10'>
+                              <span class='account-header text-secondary'>Email</span><br>
+                              <span id='accountEmail' class='text-dark'>james.robertson@email.com</span>
+                              </div>
+                              <div class='col-2'>
+                                  <i class='right small material-icons'>mail</i>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class='card mt-3 shadow-md'>
+                      <div class='card-body'>
+                          <span class='account-header text-secondary'>Password</span><br>
+                          <button id='pwdChgBtn' type='button' class='btn btn-success w-100'>Change Password</button>
+                      </div>
+                  </div>
+                  <div class='card mt-3 shadow-md'>
+                      <div class='card-body'>
+                          <div class='row'>
+                              <div class='col-10'>
+                                  <span class='account-header text-secondary'>Discount Codes</span><br>
+                                  <span id='discountCode' class='text-dark'>AENK24KN</span>
+                              </div>
+                              <div class='col-2'>
+                                  <i class='right small material-icons'>attach_money</i>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class='card mt-3 shadow-md'>
+                      <div class='card-body'>
+                          <div class='row'>
+                              <div class='col-10'>
+                                  <span class='account-header text-secondary'>Favourite Dropoff</span><br>
+                                  <span>RCK - <span id='dropOffLocation' class='text-dark'>AENK24KN</span></span>
+                              </div>
+                              <div class='col-2'>
+                                  <i class='right small material-icons'>location_on</i>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <nav id="footNav" class="navbar fixed-bottom border justify-content-around bg-light navbar-light">
+      <ul class="nav nav-fill w-100">
+          <li class="nav-item">
+              <a id="storeBtn" class="nav-link" class="nav-link text-secondary"><i class="small material-icons">store</i><p>Store</p></a>
+          </li>
+          <li class="nav-item">
+              <a id="rckBtn" class="nav-link text-primary"><i class="small material-icons">loop</i><p>RCK</p></a>
+          </li>
+          <li class="nav-item">
+              <a id="accountBtn" class="nav-link text-secondary"><i class="small material-icons">person</i><p>Account</p></a>
+          </li>
+      </ul>
+  </nav>
+  <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript" src="js/init.js"></script>
+    <script>
+        var longitude, latitude;
+        
+      // Initialize the platform object:
+      var platform = new H.service.Platform({
+        'apikey': 'bjkfk3pJqU3BF9q5_wxtcx5M03kpRxaUUsKOlFG18FA'
+      });
+
+      // Obtain the default map types from the platform object
+      var maptypes = platform.createDefaultLayers();
+      
+      // Instantiate (and display) a map object:
+      
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+                console.log("Geolocation is not supported by this browser.");
+            }
+        }
+  
+        function showPosition(position) {
+            console.log(position.coords.latitude);
+            console.log(position.coords.longitude);
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+
+            var map = new H.Map(
+                document.getElementById('mapContainer'),
+                maptypes.vector.normal.map,
+                {
+                zoom: 16,
+                center: { lng: longitude, lat: latitude }
+                });
+                }
+    </script>
+  </body>
+</html>

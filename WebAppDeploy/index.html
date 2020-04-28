@@ -1,271 +1,230 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RCK - Web App</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
-    <div id="mainHeader" class="header">
-        <h1>RCK</h1>
-    </div>
 
-    <div class="container">
-        <div id="mainContent" class="main-content">
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner overflow-allow">
-                    <div class="carousel-item">
-                        <div class="shop-nav sticky-top">
-                            <ul class="nav nav-pills mb-3 nav-justified" id="store-tab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="tops-tab" data-toggle="tab" href="#tops" role="tab" aria-controls="tops" aria-selected="true">Tops</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" id="pants-tab" data-toggle="tab" href="#pants" role="tab" aria-controls="pants" aria-selected="false">Pants</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" id="jackets-tab" data-toggle="tab" href="#jackets" role="tab" aria-controls="jackets" aria-selected="false">Jackets</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="accessories-tab" data-toggle="tab" href="#accessories" role="tab" aria-controls="accessories" aria-selected="false">Accessories</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="cart-tab" data-toggle="tab" href="#cart" role="tab" aria-controls="cart" aria-selected="false">Cart</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="store-content" id="storeContent">
-                            <div class="tab-content">
-                                <div class="tab-pane fade show active" id="tops" role="tabpanel" aria-labelledby="tops-tab">
-                                    <div class= "tab-plane active" id="pills-tops-tab" role="tabpanel" aria-labelledby="pills-tops">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RCK - Web App</title>
+        <link rel="icon" type="image/svg+xml" href="imgs/icon.svg">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+        <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+        <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+        <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js" charset="utf-8"></script>
+        <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    </head>
+    <body>
+        <div id="mainHeader" class="header border bg-light" style="width: auto;">
+            <h1>RCK</h1>
+        </div>
+    
+        <div class="container">
+            <div id="mainContent" class="main-content">
+                <div id="carouselMainMenu" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner overflow-allow">
+                        <div class="carousel-item">
+                            <div class="shop-nav sticky-top">
+                                <ul class="nav nav-pills mb-3 nav-justified" id="store-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="tops-tab" data-toggle="tab" href="#tops" role="tab" aria-controls="tops" aria-selected="true">Tops</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a class="nav-link" id="pants-tab" data-toggle="tab" href="#pants" role="tab" aria-controls="pants" aria-selected="false">Pants</a>
+                                    </li>
+                                    <li class="nav-item">
+                                    <a class="nav-link" id="jackets-tab" data-toggle="tab" href="#jackets" role="tab" aria-controls="jackets" aria-selected="false">Jackets</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="accessories-tab" data-toggle="tab" href="#accessories" role="tab" aria-controls="accessories" aria-selected="false">Accessories</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="cart-tab" data-toggle="tab" href="#cart" role="tab" aria-controls="cart" aria-selected="false">Cart</a>
+                                    </li>
+                                </ul>
+                                <div class="alert" id="shop-alert"></div>
+                            </div>
+                            <div class="store-content" id="storeContent">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="tops" role="tabpanel" aria-labelledby="tops-tab"></div>
+                                    <div class="tab-pane fade" id="pants" role="tabpanel" aria-labelledby="pants-tab"></div>
+                                    <div class="tab-pane fade" id="jackets" role="tabpanel" aria-labelledby="jackets-tab"></div>
+                                    <div class="tab-pane fade" id="accessories" role="tabpanel" aria-labelledby="accessories-tab"></div>
+                                    <div class="tab-pane fade" id="cart" role="tabpanel" aria-labelledby="cart-tab">You're cart is looking empty add some stuff to it!
                                         <div class="row row-cols-4">
                                             <div class="col">
                                                 <div class="card">
                                                     <img src="imgs/starwars-tshirt.jpg" class="card-img-top" alt="Star wars T shirt">
                                                     <div class="card-body">
                                                         <p class="card-text">Star Wars Vintage T-Shirt</p>
-                                                        <p class="card-text">Size: L</p>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> Add To Cart </button>                                        
+                                                        
+                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"> Remove </button>                                        
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col">
-                                                <div class="card">
-                                                    <img src="imgs/starwars-tshirt.jpg" class="card-img-top" alt="Star wars T shirt">
-                                                    <div class="card-body">
-                                                        <p class="card-text">Star Wars Vintage T-Shirt</p>
-                                                        <p class="card-text">Size: S</p>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> Add To Cart </button>                                        
-                                                    </div>
-                                                </div>
                                             </div>
-                                            <div class="col">
-                                                <div class="card">
-                                                    <img src="imgs/starwars-tshirt.jpg" class="card-img-top" alt="Star wars T shirt">
-                                                    <div class="card-body">
-                                                        <p class="card-text">Star Wars Vintage T-Shirt</p>
-                                                        <p class="card-text">Size: M</p>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> Add To Cart </button>                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="card">
-                                                    <img src="imgs/doom-shirt.jpg" class="card-img-top" alt="Star wars T shirt">
-                                                    <div class="card-body">
-                                                        <p class="card-text">DOOM T-Shirt</p>
-                                                        <p class="card-text">Size: L</p>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> Add To Cart </button>                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row row-cols-4" style="padding-top: 1rem;">
-                                            <div class="col">
-                                                <div class="card">
-                                                    <img src="imgs/doom-shirt.jpg" class="card-img-top" alt="Star wars T shirt">
-                                                    <div class="card-body">
-                                                        <p class="card-text">DOOM T-Shirt</p>
-                                                        <p class="card-text">Size: S</p>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> Add To Cart </button>                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="card">
-                                                    <img src="imgs/doom-shirt.jpg" class="card-img-top" alt="Star wars T shirt">
-                                                    <div class="card-body">
-                                                        <p class="card-text">DOOM T-Shirt</p>
-                                                        <p class="card-text">Size: M</p>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> Add To Cart </button>                                        
-                                                    </div>
-                                                </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="carousel-item active no-y-overflow">
+                            <div id="start-tab" class="h-100 show">
+                                <div class="col-md-12 my-auto text-center">
+                                    <p>Press start to begin</p>
+                                    <button id="startBtn" type="button" class="btn btn-success shadow">Start</button>
+                                </div>
+                            </div>
+                            <div id="loading" class="hidden mx-auto" style="width: 140px; height: 100%">
+                                <img src="imgs/loading.gif" alt="loading">
+                            </div>
+                            <div id="map-tab">
+                                <div class="col">
+                                    <div id="mapContainer"></div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div id='account-tab' class='container h-100'>
+                                <div class='card mt-3 shadow-md'>
+                                    <div class='card-body'>
+                                        <div class='row'>
+                                            <div class='col'>
+                                                <span class='account-header text-secondary'>My Account:</span><br>
+                                                <span id='accountName' class='text-dark'>James Robertson</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="tab-pane fade" id="pants" role="tabpanel" aria-labelledby="pants-tab">
-                                    <div class="row">
-                                        <div class="col mb-4">
-                                            <div class="card">
-                                                <img src="test-pants.jpg" class="card-img-top" alt="Pants">
-                                                    <div class="card-body">
-                                                        <p class="card-text">Pants</p>
-                                                        <p class="card-text">Size: L</p>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> Add To Cart </button>                                        
-                                                    </div>
+                                <div class='card mt-3 shadow-md'>
+                                    <div class='card-body'>
+                                        <div class='row'>
+                                            <div class='col-10'>
+                                            <span class='account-header text-secondary'>Email</span><br>
+                                            <span id='accountEmail' class='text-dark'>james.robertson@email.com</span>
+                                            </div>
+                                            <div class='col-2'>
+                                                <i class='right small material-icons'>mail</i>
                                             </div>
                                         </div>
-                                        <div class="col mb-4">
-                                            <div class="card">
-                                                <img src="test-pants.jpg" class="card-img-top" alt="Pants">
-                                                    <div class="card-body">
-                                                        <p class="card-text">Pants</p>
-                                                        <p class="card-text">Size: L</p>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> Add To Cart </button>                                        
-                                                    </div>
+                                    </div>
+                                </div>
+                                <div class='card mt-3 shadow-md'>
+                                    <div class='card-body'>
+                                        <span class='account-header text-secondary'>Password</span><br>
+                                        <button id='pwdChgBtn' type='button' class='btn btn-success w-100'>Change Password</button>
+                                    </div>
+                                </div>
+                                <div class='card mt-3 shadow-md'>
+                                    <div class='card-body'>
+                                        <div class='row'>
+                                            <div class='col-10'>
+                                                <span class='account-header text-secondary'>Discount Codes</span><br>
+                                                <span id='discountCode' class='text-dark'>AENK24KN</span>
+                                            </div>
+                                            <div class='col-2'>
+                                                <i class='right small material-icons'>attach_money</i>
                                             </div>
                                         </div>
-                                        <div class="col mb-4">
-                                            <div class="card">
-                                                <img src="test-pants.jpg" class="card-img-top" alt="Pants">
-                                                    <div class="card-body">
-                                                        <p class="card-text">Pants</p>
-                                                        <p class="card-text">Size: L</p>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> Add To Cart </button>                                        
-                                                    </div>
+                                    </div>
+                                </div>
+                                <div class='card mt-3 shadow-md'>
+                                    <div class='card-body'>
+                                        <div class='row'>
+                                            <div class='col-10'>
+                                                <span class='account-header text-secondary'>Favourite Dropoff</span><br>
+                                                <span>RCK - <span id='dropOffLocation' class='text-dark'>AENK24KN</span></span>
+                                            </div>
+                                            <div class='col-2'>
+                                                <i class='right small material-icons'>location_on</i>
                                             </div>
                                         </div>
-                                    </div>    
-                                </div>
-                                <div class="tab-pane fade" id="jackets" role="tabpanel" aria-labelledby="jackets-tab">Jacket</div>
-                                <div class="tab-pane fade" id="accessories" role="tabpanel" aria-labelledby="accessories-tab">Accessories</div>
-                                <div class="tab-pane fade" id="cart" role="tabpanel" aria-labelledby="cart-tab">Cart</div>
-                            </div>
-                          </div>
-
-                          <script>
-                            $(function () {
-                                $('#store-tab a[href="#tops"]').tab('show') // Select tab by name
-                                $('#store-tab a[href="#pants"]').tab('show') // Select tab by name
-                                $('#store-tab a[href="#jackets"]').tab('show') // Select tab by name
-                                $('#store-tab a[href="#accessories"]').tab('show') // Select tab by name
-                                $('#store-tab a[href="#cart"]').tab('show') // Select tab by name
-                            })  
-                          </script>
-                    </div> 
-
-
-
-
-
-
-
-
-                  <div class="carousel-item active">
-                    <div id="start-tab" class="row h-100">
-                        <div class="col-md-12 my-auto text-center">
-                            <p>Press start to begin</p>
-                            <button id="startBtn" type="button" class="btn btn-success shadow">Start</button>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <div id='account-tab' class='container h-100'>
-                        <div class='card mt-3 shadow-md'>
-                            <div class='card-body'>
-                                <div class='row'>
-                                    <div class='col'>
-                                        <span class='account-header text-secondary'>My Account:</span><br>
-                                        <span id='accountName' class='text-dark'>James Robertson</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='card mt-3 shadow-md'>
-                            <div class='card-body'>
-                                <div class='row'>
-                                    <div class='col-10'>
-                                    <span class='account-header text-secondary'>Email</span><br>
-                                    <span id='accountEmail' class='text-dark'>james.robertson@email.com</span>
-                                    </div>
-                                    <div class='col-2'>
-                                        <i class='right small material-icons'>mail</i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='card mt-3 shadow-md'>
-                            <div class='card-body'>
-                                <span class='account-header text-secondary'>Password</span><br>
-                                <button id='pwdChgBtn' type='button' class='btn btn-success w-100'>Change Password</button>
-                            </div>
-                        </div>
-                        <div class='card mt-3 shadow-md'>
-                            <div class='card-body'>
-                                <div class='row'>
-                                    <div class='col-10'>
-                                        <span class='account-header text-secondary'>Discount Codes</span><br>
-                                        <span id='discountCode' class='text-dark'>AENK24KN</span>
-                                    </div>
-                                    <div class='col-2'>
-                                        <i class='right small material-icons'>attach_money</i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='card mt-3 shadow-md'>
-                            <div class='card-body'>
-                                <div class='row'>
-                                    <div class='col-10'>
-                                        <span class='account-header text-secondary'>Favourite Dropoff</span><br>
-                                        <span>RCK - <span id='dropOffLocation' class='text-dark'>AENK24KN</span></span>
-                                    </div>
-                                    <div class='col-2'>
-                                        <i class='right small material-icons'>location_on</i>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                  </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <img src="imgs/rck_location-24px.svg" class="img-icon" alt="rck logo">
+                  <h5 class="modal-title" id="mapModalLabel"></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <h5>Address: </h5>
+                  <p><address id="address-field"></address></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary disabled" data-dismiss="modal">WIP</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
               </div>
+            </div>
+          </div>
 
-
-            
-
-            
-        </div>
-    </div>
-
-    <nav id="footNav" class="navbar fixed-bottom border justify-content-around bg-light navbar-light">
-        <ul class="nav nav-fill w-100">
-            <li class="nav-item">
-                <a id="storeBtn" class="nav-link text-secondary" href="#"><i class="small material-icons">store</i><p>Store</p></a>
-            </li>
-            <li class="nav-item">
-                <a id="rckBtn" class="nav-link text-secondary" href="#"><i class="small material-icons">loop</i><p>RCK</p></a>
-            </li>
-            <li class="nav-item">
-                <a id="accountBtn" class="nav-link text-secondary" href="#"><i class="small material-icons">person</i><p>Account</p></a>
-            </li>
-        </ul>
-    </nav>
-
-        
-
-
-
-    <!--bootstrap 4/Javascript links dont touch-->
-    <script type="text/javascript" src="js/script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/init.js"></script>
-</body>
-</html>
+          <div class="modal fade" id="shopModal" tabindex="-1" role="dialog" aria-labelledby="shopModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 id="shop-item-title"></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img id="shop-item-img" style="max-width: 14rem; max-height: 14rem;">
+                            </div>
+                            <div class="col-md-6">
+                                <h5 id="shop-item-name"></h5>
+                                <span class="text-tiny text-secondary" id="shop-item-id"></span>
+                                <p id="shop-item-stock"></p>
+                                <p id="shop-item-desc"></p>
+                                <label>Quantity: </label>
+                                <select class="custom-select" id="shop-item-quantity"></select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                  <button type="button" id="add-to-cart" class="btn btn-primary">Add to Cart</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+        <nav id="footNav" class="navbar fixed-bottom border justify-content-around bg-light navbar-light">
+            <ul class="nav nav-fill w-100">
+                <li class="nav-item">
+                    <a id="storeBtn" class="nav-link" class="nav-link text-secondary"><i class="small material-icons">store</i><p>Store</p></a>
+                </li>
+                <li class="nav-item">
+                    <a id="rckBtn" class="nav-link text-primary"><i class="small material-icons">loop</i><p>RCK</p></a>
+                </li>
+                <li class="nav-item">
+                    <a id="accountBtn" class="nav-link text-secondary"><i class="small material-icons">person</i><p>Account</p></a>
+                </li>
+            </ul>
+        </nav>
+    
+        <!--bootstrap 4/Javascript links dont touch-->
+        <script type="text/javascript" src="js/script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="js/init.js"></script>
+    </body>
+    </html>
