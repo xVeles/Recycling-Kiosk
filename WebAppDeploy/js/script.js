@@ -287,16 +287,13 @@ function shopModalData(category, index)
     let cartButton = document.getElementById("add-to-cart");
 
     if (item.Stock > 0)
-    {
+    {   
         stock.setAttribute("class", "text-secondary");
         cartButton.setAttribute("class", "btn btn-primary");
         cartButton.setAttribute("data-dismiss", "modal");
         cartButton.innerText = "Add to Cart";
-
-        cartButton.addEventListener('click', () =>
-        {
-            addToCart(category, index, quantity.value);
-        });
+        
+        cartButton.setAttribute("onmousedown", "addToCart(" + category + "," + index+ "," + quantity.value + ");");
     }
     else
     {
@@ -305,7 +302,9 @@ function shopModalData(category, index)
         cartButton.removeAttribute("data-dismiss");
         cartButton.innerText = "Out of Stock";
 
-        cartButton.parentNode.replaceChild(cartButton.cloneNode(true), cartButton);
+        cartButton.removeAttribute("onmousedown");
+
+        //cartButton.parentNode.replaceChild(cartButton.cloneNode(true), cartButton);
     }
 
     let desc = document.getElementById("shop-item-desc");
