@@ -136,6 +136,7 @@
             </div>
         </div>
     
+        <!-- Kiosk Modal popup-->
         <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
@@ -147,17 +148,117 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <h5>Address: </h5>
-                  <p><address id="address-field"></address></p>
+                    <div class="accordion" id="collapsibleKiosk">
+                        <div class="card">
+                            <div class="card-header" id="collapsibleSelectOption">
+                                <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Select the way you want to recycle your clothing
+                                </button>
+                                </h2>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="collapsibleSelectOption" data-parent="#collapsibleKiosk">
+                                <div class="card-body">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="recycleCheck" name="recycleCheck">
+                                        <label class="custom-control-label" for="recycleCheck">Recycle</label>
+                                        <p class="text-secondary">Have your clothing broken down into raw materials</p>
+                                      </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="upcycleCheck" name="upcycleCheck">
+                                        <label class="custom-control-label" for="upcycleCheck">Upcycle</label>
+                                        <p class="text-secondary">Have your clothing re-made into raw garments</p>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="donateCheck" name="donateCheck">
+                                        <label class="custom-control-label" for="donateCheck">Donate</label>
+                                        <p class="text-secondary">Give your clothing to our selected charities</p>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" id="unlockLockers">
+                                <h2 class="mb-0">
+                                <button id="selectRecycleOption" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Unlock lockers
+                                </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="unlockLockers" data-parent="#collapsibleKiosk">
+                                <div class="card-body">
+                                    <div id="recycleCard" class="card hidden">
+                                        <div class="card-body">
+                                            <div class='row'>
+                                                <div class='col-10'>
+                                                <p><span class="account-header text-secondary">Recycle</span></p>
+                                                <p><span>Locker 3</span></p>
+                                                </div>
+                                                <div class='col-2'>
+                                                    <i id="recycleIcon" class='right medium material-icons'>lock</i>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col text-center">
+                                                    <button id="unlockRecycleBtn" type="button" class="btn btn-success w-100">Unlock</button>
+                                                    <span class="text-secondary text-tiny" id="recycleNotif"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="upcycleCard" class="card hidden">
+                                        <div class="card-body">
+                                            <div class='row'>
+                                                <div class='col-10'>
+                                                <p><span class="account-header text-secondary">Upcycle</span></p>
+                                                <p><span>Locker 4</span></p>
+                                                </div>
+                                                <div class='col-2'>
+                                                    <i id="upcycleIcon" class='right medium material-icons'>lock</i>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col text-center">
+                                                    <button id="unlockUpcycleBtn" type="button" class="btn btn-success w-100">Unlock</button>
+                                                    <span class="text-secondary text-tiny" id="upcycleNotif"></span>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div id="donateCard" class="card hidden">
+                                        <div class="card-body">
+                                            <div class='row'>
+                                                <div class='col-10'>
+                                                <p><span class="account-header text-secondary">Donate</span></p>
+                                                <p><span>Locker 7</span></p>
+                                                </div>
+                                                <div class='col-2'>
+                                                    <i id="donateIcon" class='right medium material-icons'>lock</i>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col text-center">
+                                                    <button id="unlockDonateBtn" type="button" class="btn btn-success w-100">Unlock</button>
+                                                    <span class="text-center text-secondary text-tiny" id="donateNotif"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary disabled" data-dismiss="modal">WIP</button>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button id="mapModalCloseBtn" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
           </div>
 
+          <!-- Shop Pop up modals-->
           <div class="modal fade" id="shopModal" tabindex="-1" role="dialog" aria-labelledby="shopModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
@@ -208,10 +309,10 @@
         </nav>
     
         <!--bootstrap 4/Javascript links dont touch-->
-        <script type="text/javascript" src="js/script.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script type="text/javascript" src="js/init.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
     </body>
     </html>
