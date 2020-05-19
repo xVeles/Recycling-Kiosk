@@ -55,7 +55,7 @@ namespace Recycling_Kiosk.Controllers
                     {
                         sqliteConnection.Close();
 
-                        return Request.CreateResponse(HttpStatusCode.InternalServerError, "Internal Server Error: DB Select fail - " + ex.ToString());
+                        return Request.CreateResponse(HttpStatusCode.InternalServerError, "Internal Server Error: DB Insert fail - " + ex.ToString());
                     }
 
                 }
