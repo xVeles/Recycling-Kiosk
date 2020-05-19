@@ -1,4 +1,3 @@
-
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -16,115 +15,119 @@
         <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
     </head>
     <body>
-        <div id="mainHeader" class="header border bg-light" style="width: auto;">
-            <h1>RCK</h1>
-        </div>
-    
-        <div class="container">
-            <div id="mainContent" class="main-content">
-                <div id="carouselMainMenu" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner overflow-allow">
-                        <div class="carousel-item">
-                            <div class="shop-nav sticky-top">
-                                <ul class="nav nav-pills mb-3 nav-justified" id="store-tab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="tops-tab" data-toggle="tab" href="#tops" role="tab" aria-controls="tops" aria-selected="true">Tops</a>
-                                    </li>
-                                    <li class="nav-item">
-                                    <a class="nav-link" id="pants-tab" data-toggle="tab" href="#pants" role="tab" aria-controls="pants" aria-selected="false">Pants</a>
-                                    </li>
-                                    <li class="nav-item">
-                                    <a class="nav-link" id="jackets-tab" data-toggle="tab" href="#jackets" role="tab" aria-controls="jackets" aria-selected="false">Jackets</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="accessories-tab" data-toggle="tab" href="#accessories" role="tab" aria-controls="accessories" aria-selected="false">Accessories</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="cart-tab" data-toggle="tab" href="#cart" role="tab" aria-controls="cart" aria-selected="false">Cart</a>
-                                    </li>
-                                </ul>
-                                <div class="alert" id="shop-alert"></div>
-                            </div>
-                            <div class="store-content" id="storeContent">
-                                <div class="tab-content">
-                                    <div class="tab-pane fade show active" id="tops" role="tabpanel" aria-labelledby="tops-tab"></div>
-                                    <div class="tab-pane fade" id="pants" role="tabpanel" aria-labelledby="pants-tab"></div>
-                                    <div class="tab-pane fade" id="jackets" role="tabpanel" aria-labelledby="jackets-tab"></div>
-                                    <div class="tab-pane fade" id="accessories" role="tabpanel" aria-labelledby="accessories-tab"></div>
-                                    <div class="tab-pane fade" id="cart" role="tabpanel" aria-labelledby="cart-tab">You're cart is looking empty add some stuff to it!</div>
+        
+
+        <div id="mainApp" class="">
+            <div id="mainHeader" class="header border bg-light" style="width: auto;">
+                <h1>RCK</h1>
+            </div>
+        
+            <div class="container">
+                <div id="mainContent" class="main-content">
+                    <div id="carouselMainMenu" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner overflow-allow">
+                            <div class="carousel-item">
+                                <div class="shop-nav sticky-top">
+                                    <ul class="nav nav-pills mb-3 nav-justified" id="store-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="tops-tab" data-toggle="tab" href="#tops" role="tab" aria-controls="tops" aria-selected="true">Tops</a>
+                                        </li>
+                                        <li class="nav-item">
+                                        <a class="nav-link" id="pants-tab" data-toggle="tab" href="#pants" role="tab" aria-controls="pants" aria-selected="false">Pants</a>
+                                        </li>
+                                        <li class="nav-item">
+                                        <a class="nav-link" id="jackets-tab" data-toggle="tab" href="#jackets" role="tab" aria-controls="jackets" aria-selected="false">Jackets</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="accessories-tab" data-toggle="tab" href="#accessories" role="tab" aria-controls="accessories" aria-selected="false">Accessories</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="cart-tab" data-toggle="tab" href="#cart" role="tab" aria-controls="cart" aria-selected="false">Cart</a>
+                                        </li>
+                                    </ul>
+                                    <div class="alert" id="shop-alert"></div>
+                                </div>
+                                <div class="store-content" id="storeContent">
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade show active" id="tops" role="tabpanel" aria-labelledby="tops-tab"></div>
+                                        <div class="tab-pane fade" id="pants" role="tabpanel" aria-labelledby="pants-tab"></div>
+                                        <div class="tab-pane fade" id="jackets" role="tabpanel" aria-labelledby="jackets-tab"></div>
+                                        <div class="tab-pane fade" id="accessories" role="tabpanel" aria-labelledby="accessories-tab"></div>
+                                        <div class="tab-pane fade" id="cart" role="tabpanel" aria-labelledby="cart-tab">You're cart is looking empty add some stuff to it!</div>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="carousel-item active no-y-overflow">
+                                <div id="start-tab" class="h-100 show">
+                                    <div class="col-md-12 my-auto text-center">
+                                        <p>Press start to begin</p>
+                                        <button id="startBtn" type="button" class="btn btn-success shadow">Start</button>
+                                    </div>
+                                </div>
+                                <div id="loading" class="d-none mx-auto" style="width: 140px; height: 100%">
+                                    <img src="imgs/loading.gif" alt="loading">
+                                </div>
+                                <div id="map-tab">
+                                    <div class="col">
+                                        <div id="mapContainer"></div>
+                                    </div>
+                                    
                                 </div>
                             </div>
-                        </div> 
-                        <div class="carousel-item active no-y-overflow">
-                            <div id="start-tab" class="h-100 show">
-                                <div class="col-md-12 my-auto text-center">
-                                    <p>Press start to begin</p>
-                                    <button id="startBtn" type="button" class="btn btn-success shadow">Start</button>
-                                </div>
-                            </div>
-                            <div id="loading" class="hidden mx-auto" style="width: 140px; height: 100%">
-                                <img src="imgs/loading.gif" alt="loading">
-                            </div>
-                            <div id="map-tab">
-                                <div class="col">
-                                    <div id="mapContainer"></div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div id='account-tab' class='container h-100'>
-                                <div class='card mt-3 shadow-md'>
-                                    <div class='card-body'>
-                                        <div class='row'>
-                                            <div class='col'>
-                                                <span class='account-header text-secondary'>My Account:</span><br>
-                                                <span id='accountName' class='text-dark'>James Robertson</span>
+                            <div class="carousel-item">
+                                <div id='account-tab' class='container h-100'>
+                                    <div class='card mt-3 shadow-md'>
+                                        <div class='card-body'>
+                                            <div class='row'>
+                                                <div class='col'>
+                                                    <span class='account-header text-secondary'>My Account:</span><br>
+                                                    <span id='accountName' class='text-dark'>James Robertson</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class='card mt-3 shadow-md'>
-                                    <div class='card-body'>
-                                        <div class='row'>
-                                            <div class='col-10'>
-                                            <span class='account-header text-secondary'>Email</span><br>
-                                            <span id='accountEmail' class='text-dark'>james.robertson@email.com</span>
-                                            </div>
-                                            <div class='col-2'>
-                                                <i class='right small material-icons'>mail</i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class='card mt-3 shadow-md'>
-                                    <div class='card-body'>
-                                        <span class='account-header text-secondary'>Password</span><br>
-                                        <button id='pwdChgBtn' type='button' class='btn btn-success w-100'>Change Password</button>
-                                    </div>
-                                </div>
-                                <div class='card mt-3 shadow-md'>
-                                    <div class='card-body'>
-                                        <div class='row'>
-                                            <div class='col-10'>
-                                                <span class='account-header text-secondary'>Discount Codes</span><br>
-                                                <span id='discountCode' class='text-dark'>AENK24KN</span>
-                                            </div>
-                                            <div class='col-2'>
-                                                <i class='right small material-icons'>attach_money</i>
+                                    <div class='card mt-3 shadow-md'>
+                                        <div class='card-body'>
+                                            <div class='row'>
+                                                <div class='col-10'>
+                                                <span class='account-header text-secondary'>Email</span><br>
+                                                <span id='accountEmail' class='text-dark'>james.robertson@email.com</span>
+                                                </div>
+                                                <div class='col-2'>
+                                                    <i class='right small material-icons'>mail</i>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class='card mt-3 shadow-md'>
-                                    <div class='card-body'>
-                                        <div class='row'>
-                                            <div class='col-10'>
-                                                <span class='account-header text-secondary'>Favourite Dropoff</span><br>
-                                                <span>RCK - <span id='dropOffLocation' class='text-dark'>AENK24KN</span></span>
+                                    <div class='card mt-3 shadow-md'>
+                                        <div class='card-body'>
+                                            <span class='account-header text-secondary'>Password</span><br>
+                                            <button id='pwdChgBtn' type='button' class='btn btn-success w-100'>Change Password</button>
+                                        </div>
+                                    </div>
+                                    <div class='card mt-3 shadow-md'>
+                                        <div class='card-body'>
+                                            <div class='row'>
+                                                <div class='col-10'>
+                                                    <span class='account-header text-secondary'>Discount Codes</span><br>
+                                                    <span id='discountCode' class='text-dark'>AENK24KN</span>
+                                                </div>
+                                                <div class='col-2'>
+                                                    <i class='right small material-icons'>attach_money</i>
+                                                </div>
                                             </div>
-                                            <div class='col-2'>
-                                                <i class='right small material-icons'>location_on</i>
+                                        </div>
+                                    </div>
+                                    <div class='card mt-3 shadow-md'>
+                                        <div class='card-body'>
+                                            <div class='row'>
+                                                <div class='col-10'>
+                                                    <span class='account-header text-secondary'>Favourite Dropoff</span><br>
+                                                    <span>RCK - <span id='dropOffLocation' class='text-dark'>AENK24KN</span></span>
+                                                </div>
+                                                <div class='col-2'>
+                                                    <i class='right small material-icons'>location_on</i>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -135,7 +138,7 @@
                 </div>
             </div>
         </div>
-    
+        
         <!-- Kiosk Modal popup-->
         <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -188,7 +191,7 @@
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="unlockLockers" data-parent="#collapsibleKiosk">
                                 <div class="card-body">
-                                    <div id="recycleCard" class="card hidden">
+                                    <div id="recycleCard" class="card d-none">
                                         <div class="card-body">
                                             <div class='row'>
                                                 <div class='col-10'>
@@ -207,7 +210,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="upcycleCard" class="card hidden">
+                                    <div id="upcycleCard" class="card d-none">
                                         <div class="card-body">
                                             <div class='row'>
                                                 <div class='col-10'>
@@ -227,7 +230,7 @@
                                             
                                         </div>
                                     </div>
-                                    <div id="donateCard" class="card hidden">
+                                    <div id="donateCard" class="card d-none">
                                         <div class="card-body">
                                             <div class='row'>
                                                 <div class='col-10'>
