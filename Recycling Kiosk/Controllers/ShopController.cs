@@ -36,7 +36,10 @@ namespace Recycling_Kiosk.Controllers
                                     Name = (string)sqliteDataReader["Name"],
                                     Description = (string)sqliteDataReader["Description"],
                                     Stock = Convert.ToInt16(sqliteDataReader["Stock"]),
-                                    Price = (double)sqliteDataReader["Price"]
+                                    CategoryID = Convert.ToInt16(sqliteDataReader["CategoryID"]),
+                                    Price = (double)sqliteDataReader["Price"],
+                                    ShopImg = (string)sqliteDataReader["ShopImg"],
+                                    Size = (string)sqliteDataReader["Size"]
                                 };
 
                                 shopItems.Add(item);
@@ -83,6 +86,7 @@ namespace Recycling_Kiosk.Controllers
                                     Name = (string)sqliteDataReader["Name"],
                                     Description = (string)sqliteDataReader["Description"],
                                     Stock = Convert.ToInt16(sqliteDataReader["Stock"]),
+                                    CategoryID = Convert.ToInt16(sqliteDataReader["CategoryID"]),
                                     Price = (double)sqliteDataReader["Price"],
                                     ShopImg = (string)sqliteDataReader["ShopImg"]
                                 };
@@ -130,7 +134,9 @@ namespace Recycling_Kiosk.Controllers
                                     Name = (string)sqliteDataReader["Name"],
                                     Description = (string)sqliteDataReader["Description"],
                                     Stock = Convert.ToInt16(sqliteDataReader["Stock"]),
-                                    Price = (double)sqliteDataReader["Price"]
+                                    CategoryID = Convert.ToInt16(sqliteDataReader["CategoryID"]),
+                                    Price = (double)sqliteDataReader["Price"],
+                                    ShopImg = (string)sqliteDataReader["ShopImg"]   
                                 };
 
                                 shopItems.Add(item);

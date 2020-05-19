@@ -1,0 +1,8 @@
+TODO List:
+- Store page
+- Login/Signup page
+- Account page
+- Start using XHRs (XMLHTTPRequests)
+- Format webapp to use Carousel pages
+- Bottom Nav working
+- Work on consistency with the web pages(?)
