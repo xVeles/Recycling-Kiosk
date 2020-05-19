@@ -4,6 +4,8 @@ const url = "http://localhost:" + _port + "/";
 
 let platform, maptypes, map, kioskList = [];
 //Buttons
+let signUpBtn = document.getElementById("signUpButton");
+let signUpBck = document.getElementById("backBtn")
 let startBtn = document.getElementById("startBtn");
 let accountBtn = document.getElementById("accountBtn");
 let rckBtn = document.getElementById("rckBtn");
@@ -32,6 +34,7 @@ let cartContent = document.getElementById("cart");
 
 init();
 
+
 function init()
 {
     // Map API Init
@@ -42,6 +45,15 @@ function init()
     maptypes = platform.createDefaultLayers();
     
     //button eventlisteners
+
+    signUpBtn.addEventListener("click", () => {
+        signUpToggle();
+    });
+
+    signUpBck.addEventListener("click", () => {
+        signUpToggle();
+    });
+
     startBtn.addEventListener("click", () => {
         getLocation();
     }); 
@@ -376,6 +388,20 @@ function refreshCart()
 
     cartItems += "</div>";
     cartContent.innerHTML = cartItems;
+}
+
+function signUpToggle() {
+    let loginPage = document.getElementById("logIn");
+    let signUpPage = document.getElementById("signUp");
+    let statusMsg = document.getElementById("statusMsg");
+    loginPage.classList.toggle("d-none");
+    signUpPage.classList.toggle("d-none");
+    if(loginPage.classList.contains("d-none")) {
+        statusMsg.innerHTML = "Create an account to continue";
+    }
+    else {
+        statusMsg.innerHTML = "Log In to complete your order";
+    }
 }
     
 //let rckIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 170.191 150.518"><defs>
