@@ -35,13 +35,13 @@
                     <div class="form-group">
                         <input class="logInForm w-100" type="password" class="form-control" id="userInputPass" placeholder="Password">
                     </div>
-                    <button type="submit" class="btn btn-success w-100">Log In</button>
+                    <button id="loginButton" type="button" class="btn btn-success w-100">Log In</button>
                     <button id="signUpButton" type="button" class="btn w-100">Sign Up</button>
                 </form>
             </div>
 
             <div id="signUp" class="logInTransition d-none">
-                <form>
+                <form autocomplete="off">
                     <div class="form-group">
                         <input class="logInForm w-100" type="text" class="form-control" id="signUpFirstName" placeholder="First Name">
                     </div>
@@ -52,12 +52,12 @@
                         <input class="logInForm w-100" type="text" class="form-control" id="signUpUserName" placeholder="Username">
                     </div>
                     <div class="form-group">
-                        <input class="logInForm w-100" type="password" class="form-control" id="userInputPass" placeholder="Password">
+                        <input class="logInForm w-100" type="password" class="form-control" id="registerPass" placeholder="Password">
                     </div>
                     <div class="form-group">
                         <input class="logInForm w-100" type="email" class="form-control" id="signUpEmail" placeholder="Email">
                     </div>
-                    <button type="submit" class="btn btn-success w-100">Create Account</button>
+                    <button id="createAccountBtn" type="button" class="btn btn-success w-100">Create Account</button>
                     <button id="backBtn" type="button" class="btn w-100">Back</button>
                 </form>
             </div>

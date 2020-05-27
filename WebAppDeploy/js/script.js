@@ -12,6 +12,7 @@ let rckBtn = document.getElementById("rckBtn");
 let pwdChngBtn = document.getElementById("pwdChngBtn");
 let storeBtn = document.getElementById("storeBtn");
 let cartBtn = document.getElementById("cart-tab");
+let createAccountBtn = document.getElementById("createAccountBtn")
 
 //area for page
 let mainHeader = document.getElementById("mainHeader");
@@ -30,10 +31,15 @@ let jacketsContent = document.getElementById("jackets");
 let accessoriesContent = document.getElementById("accessories");
 let cartContent = document.getElementById("cart");
 
-
+//registry page
+let signUpFirstName = document.getElementById("signUpFirstName");
+let signUpLastName = document.getElementById("signUpLastName");
+let signUpUserName = document.getElementById("signUpUserName");
+let registerPass = document.getElementById("registerPass");
+let signUpEmail = document.getElementById("signUpEmail");
+let statusMsg = document.getElementById("statusMsg");
 
 init();
-
 
 function init()
 {
@@ -52,6 +58,7 @@ function init()
 
     signUpBck.addEventListener("click", () => {
         signUpToggle();
+        clearRegistration();
     });
 
     startBtn.addEventListener("click", () => {
@@ -74,6 +81,10 @@ function init()
     {
         refreshCart();
     });
+
+    createAccountBtn.addEventListener("click", () => {
+        registerUser();
+    })
 
     getStore();
 }
@@ -98,6 +109,25 @@ function carouselSlideTo(slide)
             accountBtn.setAttribute("class", "nav-link text-primary");
             break;
     }
+}
+
+//registration stuff
+function registerUser() {
+    let registerURL = url + "api/users/register";
+    let person = {Username : signUpUserName.value, Firstname : signUpFirstName.value, Lastname : signUpLastName.value, Password : registerPass.value, Email : signUpEmail.value, Points : 0, Recylce : 0, Upcycle : 0, Donate : 0};
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          signUpToggle();
+          clearRegistration();
+        }
+        else {
+            registerError(this.responseText);
+        }
+    };
+    xhr.open("POST", registerURL,true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify(person));
 }
 
 // Location stuff
@@ -390,18 +420,32 @@ function refreshCart()
     cartContent.innerHTML = cartItems;
 }
 
-function signUpToggle() {
+function signUpToggle() {;
     let loginPage = document.getElementById("logIn");
     let signUpPage = document.getElementById("signUp");
-    let statusMsg = document.getElementById("statusMsg");
     loginPage.classList.toggle("d-none");
     signUpPage.classList.toggle("d-none");
     if(loginPage.classList.contains("d-none")) {
-        statusMsg.innerHTML = "Create an account to continue";
+        statusMsg.innerHTML = "Create Account to Log In";
+        statusMsg.classList.remove("text-danger");
     }
     else {
+        statusMsg.classList.add("text-dark")
         statusMsg.innerHTML = "Log In to complete your order";
     }
+}
+
+function registerError(message) {
+    statusMsg.innerHTML= message;
+    statusMsg.classList.add("text-danger");
+}
+
+function clearRegistration() {
+signUpFirstName.value = "";
+signUpLastName.value = "";
+signUpUserName.value = "";
+registerPass.value = "";
+signUpEmail.value = "";
 }
     
 //let rckIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 170.191 150.518"><defs>
