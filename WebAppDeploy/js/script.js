@@ -13,6 +13,7 @@ let pwdChngBtn = document.getElementById("pwdChngBtn");
 let storeBtn = document.getElementById("storeBtn");
 let cartBtn = document.getElementById("cart-tab");
 let createAccountBtn = document.getElementById("createAccountBtn")
+let loginBtn = document.getElementById("loginButton");
 
 //area for page
 let mainHeader = document.getElementById("mainHeader");
@@ -39,6 +40,10 @@ let registerPass = document.getElementById("registerPass");
 let signUpEmail = document.getElementById("signUpEmail");
 let statusMsg = document.getElementById("statusMsg");
 
+//login page
+let userInputEmail = document.getElementById("userInputEmail");
+let userInputPassword = document.getElementById("userInputPass");
+
 init();
 
 function init()
@@ -51,6 +56,10 @@ function init()
     maptypes = platform.createDefaultLayers();
     
     //button eventlisteners
+
+    loginBtn.addEventListener("click", () => {
+        loginUser();
+    });
 
     signUpBtn.addEventListener("click", () => {
         signUpToggle();
@@ -128,6 +137,22 @@ function registerUser() {
     xhr.open("POST", registerURL,true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.send(JSON.stringify(person));
+}
+
+//login stuff
+function loginUser() {
+    let loginURL = url + "api/users/login";
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", loginURL, true, userInputEmail, userInputPassword);   
+    xhr.withCredentials = true;
+    xhr.send(userInputEmail.value);
+    xhr.onload = function() {
+        if (xhr.status != 200) { // analyze HTTP status of the response
+          alert(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
+        } else { // show the result
+          alert(`Done, got ${xhr.response.length} bytes`); // response is the server
+        }
+    }
 }
 
 // Location stuff
