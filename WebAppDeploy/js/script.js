@@ -17,11 +17,12 @@ let loginBtn = document.getElementById("loginButton");
 
 //area for page
 let mainHeader = document.getElementById("mainHeader");
+let recycleUnlkBtn = document.getElementById("unlockRecycleBtn");
+let upcycleUnlkBtn = document.getElementById("unlockUpcycleBtn");
+let donateUnlkBtn = document.getElementById("unlockDonateBtn");
 
 //Pages
 let accountContent = document.getElementById("account-tab");
-let startContent = document.getElementById("start-tab");
-let mapContent = document.getElementById("map-tab");
 let loading = document.getElementById("loading");
 
 //Shop
@@ -43,6 +44,17 @@ let statusMsg = document.getElementById("statusMsg");
 //login page
 let userInputEmail = document.getElementById("userInputEmail");
 let userInputPassword = document.getElementById("userInputPass");
+
+//Maps
+let recycleCard = document.getElementById("recycleCard");
+let upcycleCard = document.getElementById("upcycleCard");
+let donateCard = document.getElementById("donateCard");
+let recycleNotif = document.getElementById("recycleNotif");
+let upcycleNotif = document.getElementById("upcycleNotif");
+let donateNotif = document.getElementById("donateNotif");
+let recycleIcon = document.getElementById("recycleIcon");
+let upcycleIcon = document.getElementById("upcycleIcon");
+let donateIcon = document.getElementById("donateIcon");
 
 init();
 
@@ -69,24 +81,24 @@ function init()
         signUpToggle();
         clearRegistration();
     });
-
-    startBtn.addEventListener("click", () => {
+    
+    startBtn.addEventListener('click', () => {
         getLocation();
     }); 
     
-    accountBtn.addEventListener("click", () => {
+    accountBtn.addEventListener('click', () => {
         carouselSlideTo(2);
     });
     
-    rckBtn.addEventListener("click", () => {
+    rckBtn.addEventListener('click', () => {
         carouselSlideTo(1);
     });
     
-    storeBtn.addEventListener("click", () => {
+    storeBtn.addEventListener('click', () => {
         carouselSlideTo(0);
     });
 
-    cartBtn.addEventListener("click", () =>
+    document.getElementById("cart-tab").addEventListener('click', () =>
     {
         refreshCart();
     });
@@ -94,6 +106,30 @@ function init()
     createAccountBtn.addEventListener("click", () => {
         registerUser();
     })
+    document.getElementById("mapModalCloseBtn").addEventListener('click', () =>
+    {
+        updateRecycleButtons(0);
+    });
+
+    document.getElementById("selectRecycleOption").addEventListener('click', () =>
+    {
+        updateLockerCards();
+    });
+
+    recycleUnlkBtn.addEventListener('click', () =>
+    {
+        updateRecycleButtons(1);
+    });
+
+    upcycleUnlkBtn.addEventListener('click', () =>
+    {
+        updateRecycleButtons(2);
+    });
+
+    donateUnlkBtn.addEventListener('click', () =>
+    {
+        updateRecycleButtons(3);
+    });
 
     getStore();
 }
@@ -160,8 +196,8 @@ function getLocation()
 {
     if (navigator.geolocation)
     {
-        startContent.setAttribute("class", "h-100 hidden");
-        loading.setAttribute("class", "mx-auto show");
+        document.getElementById("start-tab").classList.toggle("d-none");
+        loading.classList.toggle("d-none");
         navigator.geolocation.getCurrentPosition(showMap);
         
     } else 
@@ -231,7 +267,7 @@ function showMap(position)
             console.log(jsonText);
             map.addObject(group);
         }
-        loading.setAttribute("class", "hidden");
+        loading.classList.toggle("d-none");
         
     }
 
@@ -242,9 +278,65 @@ function mapModalData(index)
 {
     let modalTitle = document.getElementById("mapModalLabel");
     modalTitle.innerText = kioskList[index].Name;
+}
 
-    let addressField = document.getElementById("address-field");
-    addressField.innerText = kioskList[index].Address;
+function updateLockerCards()
+{
+    console.log("t");
+    if (document.getElementById("recycleCheck").checked)
+        recycleCard.classList.toggle("class", "card");
+    else
+        recycleCard.setAttribute("class", "card d-none");
+
+    if (document.getElementById("upcycleCheck").checked)
+        upcycleCard.setAttribute("class", "card");
+    else
+        upcycleCard.setAttribute("class", "card d-none");
+
+    if (document.getElementById("donateCheck").checked)
+        donateCard.setAttribute("class", "card");
+    else
+        donateCard.setAttribute("class", "card d-none");
+}
+
+function updateRecycleButtons(mode)
+{
+    switch (mode)
+    {
+        case 0:
+            recycleUnlkBtn.setAttribute("class", "btn btn-success w-100");
+            upcycleUnlkBtn.setAttribute("class", "btn btn-success w-100");
+            donateUnlkBtn.setAttribute("class", "btn btn-success w-100");
+            recycleNotif.innerText = "";
+            upcycleNotif.innerText = "";
+            donateNotif.innerText = "";
+            recycleIcon.innerText = "lock";
+            upcycleIcon.innerText = "lock";
+            donateIcon.innerText = "lock";
+            document.getElementById("recycleCheck").checked = false;
+            document.getElementById("upcycleCheck").checked = false;
+            document.getElementById("donateCheck").checked = false;
+            $('#collapseOne').collapse('show');
+            $('#collapseTwo').collapse('hide');
+            
+
+            break;
+        case 1:
+            recycleUnlkBtn.setAttribute("class", "btn btn-success w-100 disabled");
+            recycleNotif.innerText = "Locker will automatically lock when closed";
+            recycleIcon.innerText = "lock_open";
+            break;
+        case 2:
+            upcycleUnlkBtn.setAttribute("class", "btn btn-success w-100 disabled");
+            upcycleNotif.innerText = "Locker will automatically lock when closed";
+            upcycleIcon.innerText = "lock_open";
+            break;
+        case 3:
+            donateUnlkBtn.setAttribute("class", "btn btn-success w-100 disabled");
+            donateNotif.innerText = "Locker will automatically lock when closed";
+            donateIcon.innerText = "lock_open";
+            break;  
+    }
 }
 
 function getStore()
@@ -278,10 +370,10 @@ function getStore()
                 }
             }
 
-            displayShopItems(topsContent, tops);
-            displayShopItems(pantsContent, pants);
-            displayShopItems(jacketsContent, jackets);
-            displayShopItems(accessoriesContent, accessories);
+            displayShopItems(document.getElementById("tops"), tops);
+            displayShopItems(document.getElementById("pants"), pants);
+            displayShopItems(document.getElementById("jackets"), jackets);
+            displayShopItems(document.getElementById("accessories"), accessories);
         }
     };
 
@@ -442,7 +534,7 @@ function refreshCart()
     if (cart.length == 0) cartItems = "You're cart is empty! Add some stuff to it!";
 
     cartItems += "</div>";
-    cartContent.innerHTML = cartItems;
+    document.getElementById("cart").innerHTML = cartItems;
 }
 
 function signUpToggle() {;

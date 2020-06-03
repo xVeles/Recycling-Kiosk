@@ -13,7 +13,6 @@ namespace Recycling_Kiosk.Controllers
     {
         private readonly ConfigReader configReader = new ConfigReader();
 
-        [BasicAuthentication]
         [Route("api/users/login")]
         [HttpGet]
         public HttpResponseMessage Login([FromBody] User user)
@@ -31,7 +30,7 @@ namespace Recycling_Kiosk.Controllers
                         {
                             while (sqliteDataReader.Read())
                             {
-                                user.Password = "";
+                                string password = (string)sqliteDataReader["Password"];
                                 user.Firstname = (string)sqliteDataReader["Firstname"];
                                 user.Lastname = (string)sqliteDataReader["Lastname"];
                                 user.Username = (string)sqliteDataReader["Username"];
@@ -41,6 +40,9 @@ namespace Recycling_Kiosk.Controllers
 
                                 sqliteDataReader.Close();
                                 sqliteConnection.Close();
+
+                                if (StrUtils.Hash(string.Format("{0}:{1}:{2}", user.Email, user.Password, configReader.GetString("Realm"))) != password)
+                                    return Request.CreateResponse(HttpStatusCode.Unauthorized, "Invalid Email/Password");
 
                                 return Request.CreateResponse(HttpStatusCode.OK, user);
                             }
@@ -133,7 +135,6 @@ namespace Recycling_Kiosk.Controllers
             }
         }
 
-        [BasicAuthentication]
         [Route("api/users/update")]
         [HttpPost]
         public HttpResponseMessage Update([FromBody] User user)

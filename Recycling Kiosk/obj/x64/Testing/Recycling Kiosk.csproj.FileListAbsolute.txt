@@ -1,3 +1,6 @@
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\runtimes\win-x64\native\e_sqlite3.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\runtimes\win-x86\native\e_sqlite3.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\runtimes\win-arm\native\e_sqlite3.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\Recycling Kiosk.dll.config
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\Recycling Kiosk.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\roslyn\csc.exe
@@ -62,19 +65,33 @@ D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\Sys
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Threading.Overlapped.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Xml.XPath.XDocument.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\Antlr3.Runtime.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\EntityFramework.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\EntityFramework.SqlServer.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\Microsoft.CSharp.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\Microsoft.Web.Infrastructure.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\Newtonsoft.Json.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\SQLitePCLRaw.batteries_v2.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\SQLitePCLRaw.core.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\SQLitePCLRaw.nativelibrary.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\SQLitePCLRaw.provider.dynamic_cdecl.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Buffers.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.ComponentModel.DataAnnotations.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Configuration.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Data.DataSetExtensions.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Data.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Data.SQLite.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Data.SQLite.EF6.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Data.SQLite.Linq.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Device.Portable.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Drawing.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Memory.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Net.Http.Formatting.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Net.Http.WebRequest.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Numerics.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Numerics.Vectors.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Runtime.CompilerServices.Unsafe.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Runtime.Serialization.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Web.Abstractions.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Web.ApplicationServices.dll
@@ -93,9 +110,17 @@ D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\Sys
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Xml.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Xml.Linq.dll
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\WebGrease.dll
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\EntityFramework.xml
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\EntityFramework.SqlServer.xml
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\Newtonsoft.Json.xml
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Buffers.xml
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Data.SQLite.xml
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Data.SQLite.dll.config
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Memory.xml
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Net.Http.Formatting.xml
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Numerics.Vectors.xml
+D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Runtime.CompilerServices.Unsafe.xml
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Web.Helpers.xml
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Web.Http.xml
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Web.Http.WebHost.xml
@@ -110,28 +135,3 @@ D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\obj\x64
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\obj\x64\Testing\Recycling Kiosk.csproj.CoreCompileInputs.cache
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\obj\x64\Testing\Recycling Kiosk.csproj.CopyComplete
 D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\obj\x64\Testing\Recycling Kiosk.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\runtimes\win-x86\native\e_sqlite3.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\runtimes\win-x64\native\e_sqlite3.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\runtimes\win-arm\native\e_sqlite3.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\EntityFramework.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\EntityFramework.SqlServer.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\SQLitePCLRaw.batteries_v2.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\SQLitePCLRaw.core.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\SQLitePCLRaw.nativelibrary.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\SQLitePCLRaw.provider.dynamic_cdecl.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Buffers.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Data.SQLite.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Data.SQLite.EF6.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Data.SQLite.Linq.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Memory.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Numerics.Vectors.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Runtime.CompilerServices.Unsafe.dll
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\EntityFramework.xml
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\EntityFramework.SqlServer.xml
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Buffers.xml
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Data.SQLite.xml
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Data.SQLite.dll.config
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Memory.xml
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Numerics.Vectors.xml
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Runtime.CompilerServices.Unsafe.xml
-D:\Documents\Visual Studio 2017\Projects\Recycling Kiosk\Recycling Kiosk\bin\System.Device.Portable.dll
