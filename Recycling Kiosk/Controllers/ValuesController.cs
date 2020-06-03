@@ -1,9 +1,11 @@
 ﻿using Recycling_Kiosk.Modules;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Reflection;
 using System.Web.Http;
 
 namespace Recycling_Kiosk.Controllers
@@ -18,25 +20,13 @@ namespace Recycling_Kiosk.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        [Route("api/version")]
+        [HttpGet]
+        public string Version()
         {
-            return "value";
-        }
-
-        // POST api/values
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
+            Assembly asm = Assembly.GetExecutingAssembly();
+            FileVersionInfo versionInfo = FileVersionInfo.GetVersionInfo(asm.Location);
+            return string.Format("{0}.{1}.{2}.{3}", versionInfo.FileMajorPart, versionInfo.FileMinorPart, versionInfo.FileBuildPart, versionInfo.FilePrivatePart);
         }
     }
 }

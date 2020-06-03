@@ -22,6 +22,7 @@ namespace Recycling_Kiosk
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             Console.WriteLine("Web API Version: {0}", Version());
+            Console.WriteLine("");
         }
 
         private string Version()
