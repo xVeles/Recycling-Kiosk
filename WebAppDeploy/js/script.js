@@ -178,15 +178,16 @@ function registerUser() {
 //login stuff
 function loginUser() {
     let loginURL = url + "api/users/login";
+    let person = {Email : userInputEmail.value, Password : userInputPassword.value};
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", loginURL, true, userInputEmail, userInputPassword);   
-    xhr.withCredentials = true;
-    xhr.send(userInputEmail.value);
+    xhr.open("GET", loginURL, true);   
+    xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    xhr.send(JSON.stringify(person));
     xhr.onload = function() {
-        if (xhr.status != 200) { // analyze HTTP status of the response
-          alert(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
-        } else { // show the result
-          alert(`Done, got ${xhr.response.length} bytes`); // response is the server
+        if (xhr.status != 200) {
+          alert(`Error ${xhr.status}: ${xhr.statusText}`);
+        } else {
+          alert(`Done, got ${xhr.response.length} bytes`);
         }
     }
 }
