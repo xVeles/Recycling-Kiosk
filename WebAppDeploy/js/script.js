@@ -11,6 +11,12 @@ let accountBtn = document.getElementById("accountBtn");
 let rckBtn = document.getElementById("rckBtn");
 let pwdChngBtn = document.getElementById("pwdChngBtn");
 let storeBtn = document.getElementById("storeBtn");
+let cartBtn = document.getElementById("cart-tab");
+let createAccountBtn = document.getElementById("createAccountBtn")
+let loginBtn = document.getElementById("loginButton");
+
+//area for page
+let mainHeader = document.getElementById("mainHeader");
 let recycleUnlkBtn = document.getElementById("unlockRecycleBtn");
 let upcycleUnlkBtn = document.getElementById("unlockUpcycleBtn");
 let donateUnlkBtn = document.getElementById("unlockDonateBtn");
@@ -21,6 +27,23 @@ let loading = document.getElementById("loading");
 
 //Shop
 let tops = [], pants = [], jackets = [], accessories = [], cart = [];
+let topsContent = document.getElementById("tops");
+let pantsContent = document.getElementById("pants");
+let jacketsContent = document.getElementById("jackets");
+let accessoriesContent = document.getElementById("accessories");
+let cartContent = document.getElementById("cart");
+
+//registry page
+let signUpFirstName = document.getElementById("signUpFirstName");
+let signUpLastName = document.getElementById("signUpLastName");
+let signUpUserName = document.getElementById("signUpUserName");
+let registerPass = document.getElementById("registerPass");
+let signUpEmail = document.getElementById("signUpEmail");
+let statusMsg = document.getElementById("statusMsg");
+
+//login page
+let userInputEmail = document.getElementById("userInputEmail");
+let userInputPassword = document.getElementById("userInputPass");
 
 //Maps
 let recycleCard = document.getElementById("recycleCard");
@@ -45,12 +68,18 @@ function init()
     maptypes = platform.createDefaultLayers();
     
     //button eventlisteners
+
+    loginBtn.addEventListener("click", () => {
+        loginUser();
+    });
+
     signUpBtn.addEventListener("click", () => {
         signUpToggle();
     });
 
     signUpBck.addEventListener("click", () => {
         signUpToggle();
+        clearRegistration();
     });
     
     startBtn.addEventListener('click', () => {
@@ -74,6 +103,9 @@ function init()
         refreshCart();
     });
 
+    createAccountBtn.addEventListener("click", () => {
+        registerUser();
+    })
     document.getElementById("mapModalCloseBtn").addEventListener('click', () =>
     {
         updateRecycleButtons(0);
@@ -121,6 +153,42 @@ function carouselSlideTo(slide)
         case 2:
             accountBtn.setAttribute("class", "nav-link text-primary");
             break;
+    }
+}
+
+//registration stuff
+function registerUser() {
+    let registerURL = url + "api/users/register";
+    let person = {Username : signUpUserName.value, Firstname : signUpFirstName.value, Lastname : signUpLastName.value, Password : registerPass.value, Email : signUpEmail.value, Points : 0, Recylce : 0, Upcycle : 0, Donate : 0};
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          signUpToggle();
+          clearRegistration();
+        }
+        else {
+            registerError(this.responseText);
+        }
+    };
+    xhr.open("POST", registerURL,true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify(person));
+}
+
+//login stuff
+function loginUser() {
+    let loginURL = url + "api/users/login";
+    let person = {Email : userInputEmail.value, Password : userInputPassword.value};
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", loginURL, true);   
+    xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    xhr.send(JSON.stringify(person));
+    xhr.onload = function() {
+        if (xhr.status != 200) {
+          alert(`Error ${xhr.status}: ${xhr.statusText}`);
+        } else {
+          alert(`Done, got ${xhr.response.length} bytes`);
+        }
     }
 }
 
@@ -470,16 +538,34 @@ function refreshCart()
     document.getElementById("cart").innerHTML = cartItems;
 }
 
-function signUpToggle() {
+function signUpToggle() {;
     let loginPage = document.getElementById("logIn");
     let signUpPage = document.getElementById("signUp");
-    let statusMsg = document.getElementById("statusMsg");
     loginPage.classList.toggle("d-none");
     signUpPage.classList.toggle("d-none");
     if(loginPage.classList.contains("d-none")) {
-        statusMsg.innerHTML = "Create an account to continue";
+        statusMsg.innerHTML = "Create Account to Log In";
+        statusMsg.classList.remove("text-danger");
     }
     else {
+        statusMsg.classList.add("text-dark")
         statusMsg.innerHTML = "Log In to complete your order";
     }
 }
+
+function registerError(message) {
+    statusMsg.innerHTML= message;
+    statusMsg.classList.add("text-danger");
+}
+
+function clearRegistration() {
+signUpFirstName.value = "";
+signUpLastName.value = "";
+signUpUserName.value = "";
+registerPass.value = "";
+signUpEmail.value = "";
+}
+    
+//let rckIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 170.191 150.518"><defs>
+//<style>.cls-1 {fill: #4495ec;}.cls-2 {fill: #fff;font-size: 35px;font-family: SegoeUI-Bold, Segoe UI;font-weight: 700;}</style></defs><g id="White_text" data-name="White text" transform="translate(-970.611 313.157)"><path id="Path_784" data-name="Path 784" class="cls-1" d="M81.877,24.065c-16.9-.57-21.543-22.8-21.543-22.8s-8.834-2.85-14.25,0S3.618,30.053,3.618,30.053s-6.841,1.71-1.71,10.259S17.014,62.541,17.014,62.541s4.845,4.847,11.97,0,9.12-7.694,9.12-7.694v81.8s-2.565,5.129,4.845,5.416,80.942,0,80.942,0,4.275,1.422,4.275-5.416v-81.8l9.975,7.694s5.415,2.282,8.55-1.993S162.65,38.6,162.65,38.6s1.424-5.7-1.711-8.55S128.237,6.109,123.89,2.976s-10.6-2.328-15.675-1.709S98.78,24.635,81.877,24.065Z" transform="matrix(0.999, -0.052, 0.052, 0.999, 970.611, -304.628)"/><text id="RCK" class="cls-2" transform="translate(1023.805 -210.24) rotate(-3)"><tspan x="0" y="0">RCK</tspan></text></g></svg>'
+//let currentPosIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>'
