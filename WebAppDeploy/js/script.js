@@ -13,7 +13,6 @@ let pwdChngBtn = document.getElementById("pwdChngBtn");
 let storeBtn = document.getElementById("storeBtn");
 let cartBtn = document.getElementById("cart-tab");
 let createAccountBtn = document.getElementById("createAccountBtn")
-let loginBtn = document.getElementById("loginButton");
 
 //area for page
 let mainHeader = document.getElementById("mainHeader");
@@ -68,10 +67,6 @@ function init()
     maptypes = platform.createDefaultLayers();
     
     //button eventlisteners
-
-    loginBtn.addEventListener("click", () => {
-        loginUser();
-    });
 
     signUpBtn.addEventListener("click", () => {
         signUpToggle();
