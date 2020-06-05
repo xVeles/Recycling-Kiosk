@@ -172,12 +172,18 @@ function registerUser() {
 
 //login stuff
 function loginUser() {
-    let loginURL = url + "api/users/login ";
-    let data = JSON.stringify({"Email":userInputEmail.value,"Password":userInputPassword.value});
+    let loginURL = url + "api/users/login?Email=" + userInputEmail.value;
     let xhr = new XMLHttpRequest();
-    xhr.addEventListener("readystatechange", function() {
-    if(this.readyState === 4) {
-        console.log(this.responseText);
+    xhr.open("GET", loginURL, true);   
+    xhr.setRequestHeader("Authorization", "Basic " + btoa(userInputEmail.value+":"+userInputPassword.value));
+    xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    xhr.send(null);
+    xhr.onload = function() {
+        if (xhr.status != 200) {
+          registerError("Incorrect Credentials");
+        } else {
+            
+        }
     }
     });
     console.log(data);
