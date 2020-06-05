@@ -33,6 +33,10 @@ let jacketsContent = document.getElementById("jackets");
 let accessoriesContent = document.getElementById("accessories");
 let cartContent = document.getElementById("cart");
 
+//Account Page
+let accountName = document.getElementById("accountName");
+let accountEmail = document.getElementById("accountEmail")
+
 //registry page
 let signUpFirstName = document.getElementById("signUpFirstName");
 let signUpLastName = document.getElementById("signUpLastName");
@@ -60,7 +64,7 @@ let donateIcon = document.getElementById("donateIcon");
 let loggedUsername = "";
 let loggedFirstName = "";
 let loggedLastName = "";
-let LoggedEmail = "";
+let loggedEmail = "";
 let loggedPoints = 0;
 let loggedRecycle = 0;
 let loggedUpcycle = 0;
@@ -197,7 +201,7 @@ function loginUser() {
           registerError("Incorrect Credentials");
         } else {
             let jsonText = JSON.parse(xhr.responseText);
-            LoggedEmail = userInputEmail.value;
+            loggedEmail = userInputEmail.value;
             accountPopulate(jsonText);
             successfulLogin();
         }
@@ -551,11 +555,16 @@ function refreshCart()
 }
 
 function successfulLogin() {
-
+    logToggle();
 }
 
 function logToggle() {
-    
+    let mainApp = document.getElementById("mainApp");
+    let logInScreen = document.getElementById("logInScreen");
+    let footNav = document.getElementById("footNav");
+    mainApp.classList.toggle("d-none");
+    logInScreen.classList.toggle("d-none");
+    footNav.classList.toggle("d-none");
 }
 
 function accountPopulate(jsonText) {
@@ -564,7 +573,13 @@ function accountPopulate(jsonText) {
     loggedLastName = jsonText.Lastname;
     loggedPoints = jsonText.Points;
     loggedUpcycle = jsonText.Upcycle;
-    loggedRecycle = jsonText.Recylce
+    loggedRecycle = jsonText.Recylce;
+    accountPageUpdate();
+}
+
+function accountPageUpdate() {
+    accountName.innerHTML = `${loggedFirstname} ${loggedLastName}`;
+    accountEmail.innerHTML = `${loggedEmail}`;
 }
 
 
