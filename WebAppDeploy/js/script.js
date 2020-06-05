@@ -56,6 +56,15 @@ let recycleIcon = document.getElementById("recycleIcon");
 let upcycleIcon = document.getElementById("upcycleIcon");
 let donateIcon = document.getElementById("donateIcon");
 
+//user details
+let loggedUsername = "";
+let loggedFirstName = "";
+let loggedLastName = "";
+let LoggedEmail = "";
+let loggedPoints = 0;
+let loggedRecycle = 0;
+let loggedUpcycle = 0;
+
 init();
 
 function init()
@@ -186,6 +195,11 @@ function loginUser() {
     xhr.onload = function() {
         if (xhr.status != 200) {
           registerError("Incorrect Credentials");
+        } else {
+            let jsonText = JSON.parse(xhr.responseText);
+            LoggedEmail = userInputEmail.value;
+            accountPopulate(jsonText);
+            successfulLogin();
         }
     }
 }
@@ -535,6 +549,24 @@ function refreshCart()
     cartItems += "</div>";
     document.getElementById("cart").innerHTML = cartItems;
 }
+
+function successfulLogin() {
+
+}
+
+function logToggle() {
+    
+}
+
+function accountPopulate(jsonText) {
+    loggedUsername = jsonText.Username;
+    loggedFirstname = jsonText.Firstname;
+    loggedLastName = jsonText.Lastname;
+    loggedPoints = jsonText.Points;
+    loggedUpcycle = jsonText.Upcycle;
+    loggedRecycle = jsonText.Recylce
+}
+
 
 function signUpToggle() {;
     let loginPage = document.getElementById("logIn");
