@@ -14,22 +14,27 @@ namespace Recycling_Kiosk.Controllers
         private readonly ConfigReader configReader = new ConfigReader();
 
         [Route("api/users/login")]
+        [BasicAuthentication]
         [HttpGet]
-        public HttpResponseMessage Login([FromBody] User user)
+        public HttpResponseMessage Login([FromUri]string email)
         {
             using (SQLiteConnection sqliteConnection = DBConnecter.DBConnect())
             {
-
+                Console.WriteLine("Connected Made");
                 using (SQLiteCommand sqliteCommand = new SQLiteCommand("SELECT * FROM Users WHERE Email=@email", sqliteConnection))
                 {
-                    sqliteCommand.Parameters.Add(new SQLiteParameter("@email", user.Email));
-                    
+                    sqliteCommand.Parameters.Add(new SQLiteParameter("@email", email));
+                    Console.WriteLine("Command formatted");
                     try
                     {
+                        Console.WriteLine("Executing Command");
                         using (SQLiteDataReader sqliteDataReader = sqliteCommand.ExecuteReader())
                         {
+                            
                             while (sqliteDataReader.Read())
                             {
+                                Console.WriteLine("Reading data");
+                                User user = new User();
                                 string password = (string)sqliteDataReader["Password"];
                                 user.Firstname = (string)sqliteDataReader["Firstname"];
                                 user.Lastname = (string)sqliteDataReader["Lastname"];
@@ -38,11 +43,15 @@ namespace Recycling_Kiosk.Controllers
                                 user.Upcycle = Convert.ToInt16(sqliteDataReader["Upcycle"]);
                                 user.Donate = Convert.ToInt16(sqliteDataReader["Donate"]);
 
+                                Console.WriteLine("Data Read");
+
                                 sqliteDataReader.Close();
                                 sqliteConnection.Close();
 
-                                if (StrUtils.Hash(string.Format("{0}:{1}:{2}", user.Email, user.Password, configReader.GetString("Realm"))) != password)
-                                    return Request.CreateResponse(HttpStatusCode.Unauthorized, "Invalid Email/Password");
+                                Console.WriteLine("Password Check");
+
+                                //if (StrUtils.Hash(string.Format("{0}:{1}:{2}", user.Email, user.Password, configReader.GetString("Realm"))) != password)
+                                    //return Request.CreateResponse(HttpStatusCode.Unauthorized, "Invalid Email/Password");
 
                                 return Request.CreateResponse(HttpStatusCode.OK, user);
                             }
@@ -136,6 +145,7 @@ namespace Recycling_Kiosk.Controllers
         }
 
         [Route("api/users/update")]
+        [BasicAuthentication]
         [HttpPost]
         public HttpResponseMessage Update([FromBody] User user)
         {
