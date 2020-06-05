@@ -177,17 +177,17 @@ function registerUser() {
 
 //login stuff
 function loginUser() {
-    let loginURL = url + "api/users/login";
-    let person = {Email : userInputEmail.value, Password : userInputPassword.value};
+    let loginURL = url + "api/users/login?Email=" + userInputEmail.value;
     let xhr = new XMLHttpRequest();
     xhr.open("GET", loginURL, true);   
+    xhr.setRequestHeader("Authorization", "Basic " + btoa(userInputEmail.value+":"+userInputPassword.value));
     xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-    xhr.send(JSON.stringify(person));
+    xhr.send(null);
     xhr.onload = function() {
         if (xhr.status != 200) {
-          alert(`Error ${xhr.status}: ${xhr.statusText}`);
+          registerError("Incorrect Credentials");
         } else {
-          alert(`Done, got ${xhr.response.length} bytes`);
+            
         }
     }
 }
