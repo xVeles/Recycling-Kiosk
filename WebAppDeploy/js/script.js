@@ -12,7 +12,8 @@ let rckBtn = document.getElementById("rckBtn");
 let pwdChngBtn = document.getElementById("pwdChngBtn");
 let storeBtn = document.getElementById("storeBtn");
 let cartBtn = document.getElementById("cart-tab");
-let createAccountBtn = document.getElementById("createAccountBtn")
+let createAccountBtn = document.getElementById("createAccountBtn");
+let loginBtn = document.getElementById("loginButton");
 
 //area for page
 let mainHeader = document.getElementById("mainHeader");
@@ -67,6 +68,10 @@ function init()
     maptypes = platform.createDefaultLayers();
     
     //button eventlisteners
+
+    loginBtn.addEventListener("click", () => {
+        loginUser();
+    })
 
     signUpBtn.addEventListener("click", () => {
         signUpToggle();
@@ -181,16 +186,8 @@ function loginUser() {
     xhr.onload = function() {
         if (xhr.status != 200) {
           registerError("Incorrect Credentials");
-        } else {
-            
         }
     }
-    });
-    console.log(data);
-    xhr.open("GET", loginURL, true);
-    xhr.withCredentials = true;
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(data);
 }
 
 // Location stuff
