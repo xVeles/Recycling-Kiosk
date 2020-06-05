@@ -399,16 +399,12 @@ function getStore()
 
 function displayShopItems(content, items)
 {
-    let shopContent = "<div class=\"row row-cols-4\">";
+    let shopContent = "<div class=\"row\">";
 
     for (let i = 0; i < items.length; i++)
     {
-        if (i % 4 == 0 && i != 0)
-        {
-            shopContent += "</div><div class=\"row row-cols-4 shop-row\">";
-        }
 
-        shopContent += "<div class=\"col\"><div class=\"card\"><img src=\"imgs/" + items[i].ShopImg + "\" class=\"card-img-top\" alt=\"" + items[i].Name + "\">"
+        shopContent += "<div class=\"col-md-4 col-6\"><div class=\"card\"><img src=\"imgs/" + items[i].ShopImg + "\" class=\"card-img-top\" alt=\"" + items[i].Name + "\">"
         + "<div class=\"card-body\"><span class=\"text-tiny text-secondary\">ID #" +items[i].ProductID + "</span><p class=\"card-text\">" + items[i].Name + "</p><p class=\"card-text\"> Size: " + items[i].Size 
         + "</p><button type=\"button\" onmousedown=\"shopModalData(" + items[i].CategoryID +"," + i + ")\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#shopModal\"> View Item </button></div></div></div>";
     }   
