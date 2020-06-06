@@ -14,7 +14,7 @@ let storeBtn = document.getElementById("storeBtn");
 let cartBtn = document.getElementById("cart-tab");
 let createAccountBtn = document.getElementById("createAccountBtn");
 let loginBtn = document.getElementById("loginButton");
-
+let logOutBtn = document.getElementById("logOutButton");
 //area for page
 let mainHeader = document.getElementById("mainHeader");
 let recycleUnlkBtn = document.getElementById("unlockRecycleBtn");
@@ -35,8 +35,7 @@ let cartContent = document.getElementById("cart");
 
 //Account Page
 let accountName = document.getElementById("accountName");
-let accountEmail = document.getElementById("accountEmail")
-
+let accountEmail = document.getElementById("accountEmail");
 //registry page
 let signUpFirstName = document.getElementById("signUpFirstName");
 let signUpLastName = document.getElementById("signUpLastName");
@@ -73,6 +72,7 @@ init();
 
 function init()
 {
+    console.log(logOutBtn);
     // Map API Init
     platform = new H.service.Platform({
         'apikey': 'bjkfk3pJqU3BF9q5_wxtcx5M03kpRxaUUsKOlFG18FA'
@@ -84,7 +84,11 @@ function init()
 
     loginBtn.addEventListener("click", () => {
         loginUser();
-    })
+    });
+
+    logOutBtn.addEventListener("click", () => {
+        alert("I have been clicked");
+    });
 
     signUpBtn.addEventListener("click", () => {
         signUpToggle();
