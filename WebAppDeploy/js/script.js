@@ -305,7 +305,7 @@ function updateLockerCards()
 {
     console.log("t");
     if (document.getElementById("recycleCheck").checked)
-        recycleCard.classList.toggle("class", "card");
+        recycleCard.setAttribute("class", "card");
     else
         recycleCard.setAttribute("class", "card d-none");
 
