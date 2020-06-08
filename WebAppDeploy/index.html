@@ -146,7 +146,13 @@
                                     <div class='card mt-3 shadow-md'>
                                         <div class='card-body'>
                                             <span class='account-header text-secondary'>Password</span><br>
+                                            <span id="passUpdateStatus" class="d-none"></span>
+                                            <div id="newPasswordInput" class="form-group d-none">
+                                                <input class="form-control logInForm w-100" type="password" id="olderPassword" placeholder="Old Password">
+                                                <input class="form-control logInForm w-100" type="password" id="newUserPassword" placeholder="New Password">
+                                            </div>
                                             <button id='pwdChgBtn' type='button' class='btn btn-success w-100'>Change Password</button>
+                                            <button id='cancelChgBtn' type='button' class='btn btn-light w-100 d-none'>Cancel</button>
                                         </div>
                                     </div>
                                     <div class='card mt-3 shadow-md'>
