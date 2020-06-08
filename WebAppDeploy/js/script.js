@@ -565,16 +565,12 @@ function removeFromCart(index)
 
 function refreshCart()
 {
-    cartItems = "<div class=\"row row-cols-4\">";
+    cartItems = "<div class=\"row\">";
 
     for (let i = 0; i < cart.length; i++)
     {
-        if (i % 4 == 0 && i != 0)
-        {
-            cartItems += "</div><div class=\"row row-cols-4 shop-row\">";
-        }
 
-        cartItems += "<div class=\"col\"><div class=\"card\"><img src=\"imgs/" + cart[i].ShopImg + "\" class=\"card-img-top\" alt=\"" + cart[i].Name + "\">"
+        cartItems += "<div class=\"col-6 col-md-4\"><div class=\"card\"><img src=\"imgs/" + cart[i].ShopImg + "\" class=\"card-img-top\" alt=\"" + cart[i].Name + "\">"
         + "<div class=\"card-body\"><span class=\"text-tiny text-secondary\">ID #" + cart[i].ProductID + "</span><p class=\"card-text\">" + cart[i].Name + "</p><p class=\"card-text\"> Size: " + cart[i].Size + "</p>"
         + "<p><label>Quantity: " + cart[i].Quantity + "</p><button type=\"button\" onmousedown=\"removeFromCart(" + i + ")\" class=\"btn btn-danger\"> Remove Item </button></div></div></div>";
     }
