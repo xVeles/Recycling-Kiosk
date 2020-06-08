@@ -47,10 +47,10 @@
                         <input class="logInForm w-100" type="text" class="form-control" id="signUpLastName" placeholder="Last Name">
                     </div>
                     <div class="form-group">
-                        <input class="logInForm w-100" type="text" class="form-control" id="signUpUserName" placeholder="Username" autocomplete="">
+                        <input class="logInForm w-100" type="text" class="form-control" id="signUpUserName" placeholder="Username">
                     </div>
                     <div class="form-group">
-                        <input class="logInForm w-100" type="password" class="form-control" id="registerPass" placeholder="Password" autocomplete="new-password">
+                        <input class="logInForm w-100" type="password" class="form-control" id="registerPass" placeholder="Password">
                     </div>
                     <div class="form-group">
                         <input class="logInForm w-100" type="email" class="form-control" id="signUpEmail" placeholder="Email">
@@ -61,7 +61,7 @@
             </div>
         </div>
 
-        <div id="mainApp" class="d-none">
+        <div id="mainApp" class="logInTransition d-none">
             <div id="mainHeader" class="header border bg-light" style="width: auto;">
                 <h1>RCK</h1>
             </div>
@@ -146,7 +146,13 @@
                                     <div class='card mt-3 shadow-md'>
                                         <div class='card-body'>
                                             <span class='account-header text-secondary'>Password</span><br>
+                                            <span id="passUpdateStatus" class="d-none"></span>
+                                            <div id="newPasswordInput" class="form-group d-none">
+                                                <input class="form-control logInForm w-100" type="password" id="olderPassword" placeholder="Old Password">
+                                                <input class="form-control logInForm w-100" type="password" id="newUserPassword" placeholder="New Password">
+                                            </div>
                                             <button id='pwdChgBtn' type='button' class='btn btn-success w-100'>Change Password</button>
+                                            <button id='cancelChgBtn' type='button' class='btn btn-light w-100 d-none'>Cancel</button>
                                         </div>
                                     </div>
                                     <div class='card mt-3 shadow-md'>
@@ -172,6 +178,13 @@
                                                 <div class='col-2'>
                                                     <i class='right small material-icons'>location_on</i>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='card mt-3 shadow-md'>
+                                        <div class='card-body'>
+                                            <div class='row'>
+                                                <button id='logOutButton' type="button" class="btn btn-success w-100">Log Out</button>
                                             </div>
                                         </div>
                                     </div>
@@ -341,7 +354,7 @@
             </div>
           </div>
     
-        <nav id="footNav" class="navbar fixed-bottom border justify-content-around bg-light navbar-light">
+        <nav id="footNav" class="navbar fixed-bottom border justify-content-around bg-light navbar-light logInTransition d-none">
             <ul class="nav nav-fill w-100">
                 <li class="nav-item">
                     <a id="storeBtn" class="nav-link" class="nav-link text-secondary"><i class="small material-icons">store</i><p>Store</p></a>

@@ -12,9 +12,10 @@ let rckBtn = document.getElementById("rckBtn");
 let pwdChngBtn = document.getElementById("pwdChngBtn");
 let storeBtn = document.getElementById("storeBtn");
 let cartBtn = document.getElementById("cart-tab");
-let createAccountBtn = document.getElementById("createAccountBtn")
+let createAccountBtn = document.getElementById("createAccountBtn");
 let loginBtn = document.getElementById("loginButton");
-
+let logOutBtn = document.getElementById("logOutButton");
+let pwdChgBtn = document.getElementById("pwdChgBtn")
 //area for page
 let mainHeader = document.getElementById("mainHeader");
 let recycleUnlkBtn = document.getElementById("unlockRecycleBtn");
@@ -33,6 +34,14 @@ let jacketsContent = document.getElementById("jackets");
 let accessoriesContent = document.getElementById("accessories");
 let cartContent = document.getElementById("cart");
 
+//Account Page
+let accountName = document.getElementById("accountName");
+let accountEmail = document.getElementById("accountEmail");
+let newPasswordInput = document.getElementById("newPasswordInput");
+let newUserPassword = document.getElementById("newUserPassword");
+let olderPassword = document.getElementById("olderPassword");
+let cancelChgBtn = document.getElementById("cancelChgBtn");
+let passUpdateStatus = document.getElementById("passUpdateStatus");
 //registry page
 let signUpFirstName = document.getElementById("signUpFirstName");
 let signUpLastName = document.getElementById("signUpLastName");
@@ -56,6 +65,16 @@ let recycleIcon = document.getElementById("recycleIcon");
 let upcycleIcon = document.getElementById("upcycleIcon");
 let donateIcon = document.getElementById("donateIcon");
 
+//user details
+let loggedUsername = "";
+let loggedFirstName = "";
+let loggedLastName = "";
+let loggedEmail = "";
+let loggedPoints = 0;
+let loggedRecycle = 0;
+let loggedUpcycle = 0;
+let loggedDonation = 0;
+
 init();
 
 function init()
@@ -68,11 +87,21 @@ function init()
     maptypes = platform.createDefaultLayers();
     
     //button eventlisteners
-
     loginBtn.addEventListener("click", () => {
         loginUser();
     });
-
+    logOutBtn.addEventListener("click", () => {
+        accountPopulate({Username:'',Firstname:'',Lastname:'',Points:0,Upcycle:0,Recylce:0});
+        carouselSlideTo(1);
+        logToggle();
+    });
+    pwdChgBtn.addEventListener("click", () => {
+        changePassword();
+    })
+    cancelChgBtn.addEventListener("click", () => {
+        newPasswordInput.classList.toggle("d-none");
+        cancelChgBtn.classList.toggle("d-none");
+    })
     signUpBtn.addEventListener("click", () => {
         signUpToggle();
     });
@@ -87,6 +116,7 @@ function init()
     }); 
     
     accountBtn.addEventListener('click', () => {
+        passUpdateStatus.classList.add("d-none");
         carouselSlideTo(2);
     });
     
@@ -187,7 +217,28 @@ function loginUser() {
         if (xhr.status != 200) {
           registerError("Incorrect Credentials");
         } else {
-            
+            let jsonText = JSON.parse(xhr.responseText);
+            loggedEmail = userInputEmail.value;
+            accountPopulate(jsonText);
+            successfulLogin();
+        }
+    }
+}
+
+function updatePassword(jsonUpInfo) {
+    let updateURL = url + "api/users/update";
+    let xhr = new XMLHttpRequest()
+    xhr.open("POST", updateURL, true);
+    xhr.withCredentials = true;
+    xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    xhr.setRequestHeader("Authorization", "Basic " + btoa(loggedEmail+":"+olderPassword.value));
+    xhr.send(jsonUpInfo);
+    xhr.onload = function() {
+        if (xhr.status != 200) {
+          showUpdateStatus("Wrong Password");
+        } else {
+            updateSuccess();
+            showUpdateStatus("Update Success");
         }
     }
 }
@@ -285,7 +336,7 @@ function updateLockerCards()
 {
     console.log("t");
     if (document.getElementById("recycleCheck").checked)
-        recycleCard.classList("class", "card");
+        recycleCard.setAttribute("class", "card");
     else
         recycleCard.setAttribute("class", "card d-none");
 
@@ -383,16 +434,12 @@ function getStore()
 
 function displayShopItems(content, items)
 {
-    let shopContent = "<div class=\"row row-cols-4\">";
+    let shopContent = "<div class=\"row\">";
 
     for (let i = 0; i < items.length; i++)
     {
-        if (i % 4 == 0 && i != 0)
-        {
-            shopContent += "</div><div class=\"row row-cols-4 shop-row\">";
-        }
 
-        shopContent += "<div class=\"col\"><div class=\"card\"><img src=\"imgs/" + items[i].ShopImg + "\" class=\"card-img-top\" alt=\"" + items[i].Name + "\">"
+        shopContent += "<div class=\"col-md-4 col-6\"><div class=\"card\"><img src=\"imgs/" + items[i].ShopImg + "\" class=\"card-img-top\" alt=\"" + items[i].Name + "\">"
         + "<div class=\"card-body\"><span class=\"text-tiny text-secondary\">ID #" +items[i].ProductID + "</span><p class=\"card-text\">" + items[i].Name + "</p><p class=\"card-text\"> Size: " + items[i].Size 
         + "</p><button type=\"button\" onmousedown=\"shopModalData(" + items[i].CategoryID +"," + i + ")\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#shopModal\"> View Item </button></div></div></div>";
     }   
@@ -538,6 +585,36 @@ function refreshCart()
     document.getElementById("cart").innerHTML = cartItems;
 }
 
+function successfulLogin() {
+    logToggle();
+}
+
+function logToggle() {
+    let mainApp = document.getElementById("mainApp");
+    let logInScreen = document.getElementById("logInScreen");
+    let footNav = document.getElementById("footNav");
+    mainApp.classList.toggle("d-none");
+    logInScreen.classList.toggle("d-none");
+    footNav.classList.toggle("d-none");
+}
+
+function accountPopulate(jsonText) {
+    loggedUsername = jsonText.Username;
+    loggedFirstname = jsonText.Firstname;
+    loggedLastName = jsonText.Lastname;
+    loggedPoints = jsonText.Points;
+    loggedUpcycle = jsonText.Upcycle;
+    loggedRecycle = jsonText.Recycle;
+    loggedDonation = jsonText.Donate;
+    accountPageUpdate();
+}
+
+function accountPageUpdate() {
+    accountName.innerHTML = `${loggedFirstname} ${loggedLastName}`;
+    accountEmail.innerHTML = `${loggedEmail}`;
+}
+
+
 function signUpToggle() {;
     let loginPage = document.getElementById("logIn");
     let signUpPage = document.getElementById("signUp");
@@ -565,7 +642,36 @@ signUpUserName.value = "";
 registerPass.value = "";
 signUpEmail.value = "";
 }
+
+function showUpdateStatus(message){
+    passUpdateStatus.classList.remove("d-none");
+    passUpdateStatus.innerHTML = message;
+    if(message == "Update Success") {
+        passUpdateStatus.classList.add("text-success");
+        passUpdateStatus.classList.remove("text-danger");
+    } else {
+        passUpdateStatus.classList.remove("text-success");
+        passUpdateStatus.classList.add("text-danger");
+    }
+}
+
+function updateSuccess() {
+    olderPassword.value = "";
+    newUserPassword.value = "";
+    newPasswordInput.classList.toggle("d-none");
+    cancelChgBtn.classList.toggle("d-none");
+}
+
+function changePassword () {
+    if(newPasswordInput.classList.contains("d-none")) {
+        newPasswordInput.classList.toggle("d-none");
+        cancelChgBtn.classList.toggle("d-none");
+    } else {
+        let body = {Username:loggedUsername,Firstname:loggedFirstname,Lastname:loggedLastName,Password:newUserPassword.value,Email:loggedEmail,Points:loggedPoints,Recylce:loggedRecycle,Upcycle:loggedUpcycle,Donate:loggedDonation};
+        updatePassword(JSON.stringify(body));
+    }
     
+}   
 //let rckIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 170.191 150.518"><defs>
 //<style>.cls-1 {fill: #4495ec;}.cls-2 {fill: #fff;font-size: 35px;font-family: SegoeUI-Bold, Segoe UI;font-weight: 700;}</style></defs><g id="White_text" data-name="White text" transform="translate(-970.611 313.157)"><path id="Path_784" data-name="Path 784" class="cls-1" d="M81.877,24.065c-16.9-.57-21.543-22.8-21.543-22.8s-8.834-2.85-14.25,0S3.618,30.053,3.618,30.053s-6.841,1.71-1.71,10.259S17.014,62.541,17.014,62.541s4.845,4.847,11.97,0,9.12-7.694,9.12-7.694v81.8s-2.565,5.129,4.845,5.416,80.942,0,80.942,0,4.275,1.422,4.275-5.416v-81.8l9.975,7.694s5.415,2.282,8.55-1.993S162.65,38.6,162.65,38.6s1.424-5.7-1.711-8.55S128.237,6.109,123.89,2.976s-10.6-2.328-15.675-1.709S98.78,24.635,81.877,24.065Z" transform="matrix(0.999, -0.052, 0.052, 0.999, 970.611, -304.628)"/><text id="RCK" class="cls-2" transform="translate(1023.805 -210.24) rotate(-3)"><tspan x="0" y="0">RCK</tspan></text></g></svg>'
 //let currentPosIcon = '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>'
