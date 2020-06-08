@@ -134,7 +134,7 @@ function init()
     });
 
     createAccountBtn.addEventListener("click", () => {
-        registerUser();
+        validatePassword();
     })
     document.getElementById("mapModalCloseBtn").addEventListener('click', () =>
     {
@@ -653,6 +653,15 @@ function showUpdateStatus(message){
         passUpdateStatus.classList.remove("text-success");
         passUpdateStatus.classList.add("text-danger");
     }
+}
+
+function validatePassword() {
+    if(registerPass.value.match(/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/)) {
+        registerUser();
+    } else {
+        registerError("Sorry Password must be atleast 8 charcters, one lower cased character, one upper cased character and atleast one number");
+    }
+
 }
 
 function updateSuccess() {
