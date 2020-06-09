@@ -26,6 +26,8 @@ Readme Version: 1.5.1.1024
 ### Hosting & Starting Web App
 **Windows Hosting**
 
+Brief Summary of install instructions, for more detailed instructions please look at (RCK Install Manual)[RCK Install Manual.pdf] 
+
 Required to use **IISExpress** to host Web API in PowerShell
 
 If you don't have IISExpress you can download it [here](https://www.microsoft.com/en-us/download/details.aspx?id=48264). A restart is required to finish the installation.
@@ -33,6 +35,8 @@ If you don't have IISExpress you can download it [here](https://www.microsoft.co
 E.G *& "C:\Program Files\IIS Express\IISExpress.exe" /port:8189 /path:D:\Documents\ComSci399*
 
 Required to modify Web.config and modify "DataRoot" field to match the path used in the the command. Be sure to add "*/WebApp*" to the end of it!
+
+
 
 ## Basic Authentication
 Some requests will have a \[BasicAuthentication\] tag. This indicates that when you are forming the XHR (XMLHttpRequest) request, you will need to declare it `withCredentials = true`
