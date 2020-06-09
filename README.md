@@ -26,7 +26,7 @@ Readme Version: 1.5.1.1024
 ### Hosting & Starting Web App
 **Windows Hosting**
 
-Brief Summary of install instructions, for more detailed instructions please look at (RCK Install Manual)[RCK Install Manual.pdf] 
+Brief Summary of install instructions, for more detailed instructions please look at RCK Install Manual.pdf
 
 Required to use **IISExpress** to host Web API in PowerShell
 
