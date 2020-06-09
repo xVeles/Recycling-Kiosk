@@ -3,9 +3,9 @@
 # Recycling-Kiosk
 RDA's WebAPI for 399
 
-WebAPI Version: 1.5.1.1024
+WebAPI Version: 1.6.2.5323
 
-Readme Version: 1.5.1.1024
+Readme Version: 1.6.2.5323
 
 ## Table of Contents
 - [Hosting](#Hosting--Starting-Web-App)
