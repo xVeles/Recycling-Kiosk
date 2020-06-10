@@ -26,6 +26,8 @@ Readme Version: 1.6.2.5323
 ### Hosting & Starting Web App
 **Windows Hosting**
 
+You will only need to be required to download WebAppDeploy/ and all of it's sub folders. The other files in the master branch are just source code files.
+
 Brief Summary of install instructions, for more detailed instructions please look at RCK Install Manual.pdf
 
 Required to use **IISExpress** to host Web API in PowerShell
